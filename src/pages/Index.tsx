@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Star, Phone, MapPin, Clock, ChevronDown, ChevronUp } from "lucide-react";
+import { Star, Phone, MapPin, Clock, ChevronDown, ChevronUp, Send } from "lucide-react";
 import Layout from "@/components/Layout";
 import SEOHead from "@/components/SEOHead";
 
-const BOOKING_URL = "https://initialsalon.com/";
+const BOOKING_URL =
+  "https://www.fresha.com/a/initial-salon-richmond-6386-no-3-road-kr9spcrw/all-offer?menu=true&rwg_token=AJKvS9UQy7d34XWVYz7Y2UcNMMI0llYMKBzKtJ-ix_hcoOULUtHkYyx4zXbut-9xmCflwhAa8Da7oKG28yDyZbEloWPcwryVjw%3D%3D&gei=7VnqZrP2Aorx0PEPoLbVsQ8";
+const SHOP_URL = "https://www.fresha.com/store/initial-salon-store-ariubv76";
 
 /* ── Data ── */
 
@@ -108,19 +110,17 @@ const testimonials = [
   },
 ];
 
-/* ── Animations ── */
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
+/* ── Reveal helper ── */
+const reveal = {
+  hidden: { opacity: 0, y: 16 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" },
+    transition: { delay: i * 0.07, duration: 0.55, ease: [0.25, 0.1, 0.25, 1] },
   }),
 };
 
 /* ── Page ── */
-
 const Index = () => {
   const [showAllStylists, setShowAllStylists] = useState(false);
   const [expandedService, setExpandedService] = useState<number | null>(0);
@@ -134,28 +134,28 @@ const Index = () => {
         description="Welcome to Initial Hair Salon in Richmond, BC. Japanese and Taiwanese expertise combine for exceptional styling. Book your appointment today."
       />
 
-      {/* ─── HERO ─── */}
-      <section id="home" className="relative min-h-[85vh] md:min-h-[90vh] flex items-center">
+      {/* ═══════ HERO ═══════ */}
+      <section id="home" className="relative min-h-[92vh] flex items-end pb-16 md:pb-24">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url(https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-25.jpg)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/60 via-foreground/40 to-foreground/20" />
-        <div className="relative z-10 container-site">
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/25 to-transparent" />
+        <div className="relative z-10 container-site w-full">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="max-w-xl"
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="max-w-lg"
           >
-            <p className="font-body text-xs tracking-[0.25em] uppercase text-background/70 mb-5">
-              Japanese & Taiwanese Expertise
+            <p className="font-body text-[10px] tracking-[0.3em] uppercase text-background/60 mb-4">
+              Japanese &amp; Taiwanese Expertise · Richmond, BC
             </p>
-            <h1 className="hero-title text-background mb-5">
+            <h1 className="font-heading text-background leading-[1.05] tracking-tight mb-5" style={{ fontSize: "clamp(2.25rem, 4.5vw + 0.5rem, 3.75rem)" }}>
               Bring Out the Best in Your Hair
             </h1>
-            <p className="font-body text-base md:text-lg text-background/80 leading-relaxed mb-8 max-w-md">
-              Where precision meets artistry. Experience personalized styling in a harmonious and relaxing ambience.
+            <p className="font-body text-sm md:text-base text-background/75 leading-relaxed mb-8 max-w-sm">
+              Precision meets artistry. Experience personalized styling in a harmonious, relaxing ambience.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-center">
@@ -163,11 +163,8 @@ const Index = () => {
               </a>
               <a
                 href="#services"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="btn-outline border-background/30 text-background hover:bg-background hover:text-foreground text-center"
+                onClick={(e) => { e.preventDefault(); document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" }); }}
+                className="btn-outline border-background/25 text-background hover:bg-background hover:text-foreground text-center"
               >
                 View Services
               </a>
@@ -176,30 +173,26 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ─── ABOUT ─── */}
-      <section className="section-padding">
+      {/* ═══════ ABOUT ═══════ */}
+      <section className="py-24 md:py-32">
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
-            >
-              <motion.span variants={fadeIn} custom={0} className="section-label">About Us</motion.span>
-              <motion.h2 variants={fadeIn} custom={1} className="section-title mb-5">
-                Sculpting Stylish Solutions
-              </motion.h2>
-              <motion.p variants={fadeIn} custom={2} className="font-body text-muted-foreground leading-relaxed mb-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
+              <motion.span variants={reveal} custom={0} className="section-label">About</motion.span>
+              <motion.h2 variants={reveal} custom={1} className="section-title mb-6">Sculpting Stylish Solutions</motion.h2>
+              <motion.p variants={reveal} custom={2} className="font-body text-muted-foreground leading-[1.8] mb-4 text-[15px]">
                 Welcome to Initial Hair Salon, where Japanese and Taiwanese expertise combine for exceptional styling. Our stylists merge precision and innovation to create personalized experiences that exceed expectations.
               </motion.p>
-              <motion.p variants={fadeIn} custom={3} className="font-body text-muted-foreground leading-relaxed">
-                Step in and immerse yourself in our salon's harmonious and relaxing ambience. Every visit is crafted to make you feel your best.
+              <motion.p variants={reveal} custom={3} className="font-body text-muted-foreground leading-[1.8] text-[15px]">
+                Step in and immerse yourself in our salon's harmonious and relaxing ambience. Every visit is crafted to make you feel your very best.
               </motion.p>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.97 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6 }}
-              className="aspect-[4/5] rounded-xl overflow-hidden"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.65 }}
+              className="aspect-[4/5] overflow-hidden"
             >
               <img
                 src="https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-33.jpg"
@@ -211,98 +204,79 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ─── STYLISTS ─── */}
-      <section id="stylists" className="section-padding bg-muted/30">
+      {/* ═══════ STYLISTS ═══════ */}
+      <section id="stylists" className="py-24 md:py-32 bg-accent/40">
         <div className="container-site">
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
-            className="text-center mb-14"
-          >
-            <motion.span variants={fadeIn} custom={0} className="section-label">Our Team</motion.span>
-            <motion.h2 variants={fadeIn} custom={1} className="section-title">Stylists</motion.h2>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-16">
+            <motion.span variants={reveal} custom={0} className="section-label">Our Team</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title">Stylists</motion.h2>
           </motion.div>
 
           <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-10 md:gap-x-6 md:gap-y-12"
           >
             {visibleStylists.map((s, i) => (
-              <motion.div key={`${s.name}-${i}`} variants={fadeIn} custom={i} className="text-center group">
-                <div className="aspect-[3/4] rounded-lg overflow-hidden mb-3 bg-muted">
+              <motion.div key={`${s.name}-${i}`} variants={reveal} custom={i} className="text-center group">
+                <div className="aspect-[3/4] overflow-hidden mb-4 bg-muted">
                   <img
                     src={s.img}
                     alt={s.name}
-                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-heading text-sm md:text-base font-bold text-foreground">{s.name}</h3>
-                <p className="font-body text-xs text-muted-foreground mt-0.5">Stylist</p>
+                <h3 className="font-heading text-sm font-bold text-foreground tracking-wide">{s.name}</h3>
+                <p className="font-body text-[11px] text-muted-foreground mt-1 tracking-wider uppercase">Stylist</p>
               </motion.div>
             ))}
           </motion.div>
 
           {stylists.length > 8 && (
-            <div className="text-center mt-8">
-              <button
-                onClick={() => setShowAllStylists(!showAllStylists)}
-                className="btn-ghost gap-2"
-              >
-                {showAllStylists ? (
-                  <>Show Less <ChevronUp className="w-4 h-4" /></>
-                ) : (
-                  <>Show All Stylists <ChevronDown className="w-4 h-4" /></>
-                )}
+            <div className="text-center mt-10">
+              <button onClick={() => setShowAllStylists(!showAllStylists)} className="btn-ghost gap-2 text-xs tracking-wider uppercase">
+                {showAllStylists ? (<>Show Less <ChevronUp className="w-3.5 h-3.5" /></>) : (<>View All Stylists <ChevronDown className="w-3.5 h-3.5" /></>)}
               </button>
             </div>
           )}
         </div>
       </section>
 
-      {/* ─── SERVICES ─── */}
-      <section id="services" className="section-padding">
-        <div className="container-site max-w-3xl">
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
-            className="text-center mb-14"
-          >
-            <motion.span variants={fadeIn} custom={0} className="section-label">What We Offer</motion.span>
-            <motion.h2 variants={fadeIn} custom={1} className="section-title">Services</motion.h2>
+      {/* ═══════ SERVICES ═══════ */}
+      <section id="services" className="py-24 md:py-32">
+        <div className="container-site max-w-2xl">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-16">
+            <motion.span variants={reveal} custom={0} className="section-label">What We Offer</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title">Services &amp; Pricing</motion.h2>
           </motion.div>
 
           {/* Promo */}
-          <div className="mb-10 p-4 rounded-lg bg-secondary/5 border border-secondary/15 text-center">
+          <div className="mb-10 py-3 px-5 border-l-2 border-secondary/40 bg-accent/30">
             <p className="font-body text-sm text-foreground">
-              🎉 New Stylist Discount: <span className="font-semibold">15% Off Perm & Colouring</span>
+              New stylist discount — <span className="font-semibold">15% off perm &amp; colouring</span>
             </p>
           </div>
 
-          {/* Accordion Services */}
-          <div className="space-y-3">
+          {/* Accordion */}
+          <div className="divide-y divide-border border-t border-b border-border">
             {serviceCategories.map((cat, ci) => (
-              <div key={cat.title} className="border border-border rounded-lg overflow-hidden">
+              <div key={cat.title}>
                 <button
                   onClick={() => setExpandedService(expandedService === ci ? null : ci)}
-                  className="w-full flex items-center justify-between px-5 py-4 bg-background hover:bg-muted/30 transition-colors"
+                  className="w-full flex items-center justify-between py-5 text-left group"
                 >
-                  <div className="text-left">
+                  <div>
                     <span className="font-heading text-base font-bold text-foreground">{cat.title}</span>
-                    {cat.note && (
-                      <span className="block font-body text-xs text-muted-foreground mt-0.5">{cat.note}</span>
-                    )}
+                    {cat.note && <span className="block font-body text-[11px] text-muted-foreground mt-0.5">{cat.note}</span>}
                   </div>
-                  {expandedService === ci ? (
-                    <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                  ) : (
-                    <ChevronDown className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                  )}
+                  <ChevronDown className={`w-4 h-4 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${expandedService === ci ? "rotate-180" : ""}`} />
                 </button>
                 {expandedService === ci && (
-                  <div className="px-5 pb-4">
+                  <div className="pb-5">
                     {cat.items.map((item) => (
-                      <div key={item.name} className="flex items-center justify-between py-3 border-b border-border last:border-b-0">
+                      <div key={item.name} className="flex items-baseline justify-between py-2.5">
                         <span className="font-body text-sm text-foreground">{item.name}</span>
-                        <span className="font-body text-sm font-semibold text-secondary">{item.price}</span>
+                        <span className="font-body text-sm text-muted-foreground tabular-nums">{item.price}</span>
                       </div>
                     ))}
                   </div>
@@ -311,11 +285,11 @@ const Index = () => {
             ))}
           </div>
 
-          <p className="font-body text-xs text-muted-foreground text-center mt-6">
+          <p className="font-body text-[11px] text-muted-foreground text-center mt-6 tracking-wide">
             Prices may vary depending on hair length, thickness, and stylist.
           </p>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-10">
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
               Book Appointment
             </a>
@@ -323,152 +297,152 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ─── PORTFOLIOS ─── */}
-      <section id="portfolios" className="section-padding bg-muted/30">
+      {/* ═══════ PORTFOLIO ═══════ */}
+      <section id="portfolio" className="py-24 md:py-32 bg-accent/40">
         <div className="container-site">
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
-            className="text-center mb-14"
-          >
-            <motion.span variants={fadeIn} custom={0} className="section-label">Our Work</motion.span>
-            <motion.h2 variants={fadeIn} custom={1} className="section-title">Portfolios</motion.h2>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-16">
+            <motion.span variants={reveal} custom={0} className="section-label">Our Work</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title">Portfolio</motion.h2>
           </motion.div>
 
           <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3"
           >
             {portfolioImages.map((img, i) => (
-              <motion.div
-                key={i}
-                variants={fadeIn}
-                custom={i}
-                className="aspect-square rounded-lg overflow-hidden bg-muted"
-              >
+              <motion.div key={i} variants={reveal} custom={i} className="aspect-square overflow-hidden bg-muted">
                 <img
                   src={img}
                   alt={`Portfolio ${i + 1}`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out"
                   loading="lazy"
                 />
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Online Shop Promo */}
-          <div className="mt-12 p-6 rounded-xl bg-background border border-border text-center">
-            <p className="font-body text-sm text-foreground leading-relaxed max-w-lg mx-auto mb-4">
-              Transform your hair care routine with our top-quality Hair Oil, Shampoo, Hair Mask, and Spray. Use Promo Code: <span className="font-bold">"ONLINESELL"</span> for 15% OFF Store Pickup.
+          {/* Shop promo */}
+          <div className="mt-14 text-center">
+            <p className="font-body text-sm text-muted-foreground leading-relaxed max-w-md mx-auto mb-5">
+              Transform your hair care routine with our top-quality products. Use promo code <span className="font-semibold text-foreground">"ONLINESELL"</span> for 15% off store pickup.
             </p>
-            <a
-              href="https://initialsalon.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline text-xs"
-            >
+            <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost text-xs tracking-wider uppercase underline underline-offset-4">
               Shop Products ↗
             </a>
           </div>
         </div>
       </section>
 
-      {/* ─── TESTIMONIALS ─── */}
-      <section className="section-padding">
-        <div className="container-site">
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
-            className="text-center mb-14"
-          >
-            <motion.span variants={fadeIn} custom={0} className="section-label">Client Love</motion.span>
-            <motion.h2 variants={fadeIn} custom={1} className="section-title">What Our Clients Say</motion.h2>
+      {/* ═══════ TESTIMONIALS ═══════ */}
+      <section className="py-24 md:py-32">
+        <div className="container-site max-w-4xl">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-16">
+            <motion.span variants={reveal} custom={0} className="section-label">Client Love</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title">What Our Clients Say</motion.h2>
           </motion.div>
 
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-          >
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {testimonials.map((t, i) => (
-              <motion.div
-                key={t.author}
-                variants={fadeIn}
-                custom={i}
-                className="p-6 rounded-lg border border-border bg-background"
-              >
-                <div className="flex gap-0.5 mb-4">
+              <motion.div key={t.author} variants={reveal} custom={i} className="relative pl-5 border-l border-border">
+                <div className="flex gap-0.5 mb-3">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-3.5 h-3.5 fill-secondary text-secondary" />
+                    <Star key={j} className="w-3 h-3 fill-secondary/60 text-secondary/60" />
                   ))}
                 </div>
-                <p className="font-body text-sm text-foreground/80 leading-relaxed mb-5 italic">
-                  "{t.text}"
-                </p>
-                <p className="font-body text-xs font-semibold text-foreground">— {t.author}</p>
+                <p className="font-body text-sm text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
+                <p className="font-body text-[11px] font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* ─── CONTACT ─── */}
-      <section id="contact" className="section-padding bg-muted/30">
+      {/* ═══════ CONTACT + INFO ═══════ */}
+      <section className="py-24 md:py-32 bg-accent/40">
         <div className="container-site">
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}
-            className="text-center mb-14"
-          >
-            <motion.span variants={fadeIn} custom={0} className="section-label">Get In Touch</motion.span>
-            <motion.h2 variants={fadeIn} custom={1} className="section-title">Contact</motion.h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20">
+            {/* Left — info */}
+            <div>
+              <span className="section-label">Visit Us</span>
+              <h2 className="section-title mb-8">Get In Touch</h2>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <Phone className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
+                  <div>
+                    <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Phone</p>
+                    <a href="tel:604-715-7888" className="font-body text-sm text-foreground hover:text-secondary transition-colors">604-715-7888</a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <MapPin className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
+                  <div>
+                    <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Address</p>
+                    <p className="font-body text-sm text-foreground">#151 - 6386 No. 3 Rd., Richmond, BC</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <Clock className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
+                  <div>
+                    <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Hours</p>
+                    <p className="font-body text-sm text-foreground">Monday – Sunday: 11:00 am – 7:00 pm</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10">
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                  Book Appointment
+                </a>
+              </div>
+            </div>
+
+            {/* Right — map */}
+            <div className="aspect-square lg:aspect-auto overflow-hidden bg-muted">
+              <iframe
+                title="Initial Salon Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2610.5!2d-123.1368!3d49.1707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDEwJzE0LjUiTiAxMjPCsDA4JzEyLjUiVw!5e0!3m2!1sen!2sca!4v1700000000000"
+                className="w-full h-full min-h-[320px] border-0"
+                loading="lazy"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ JOIN OUR TEAM ═══════ */}
+      <section id="join-team" className="py-24 md:py-32">
+        <div className="container-site max-w-2xl text-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
+            <motion.span variants={reveal} custom={0} className="section-label">Careers</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title mb-6">Join Our Team</motion.h2>
+            <motion.p variants={reveal} custom={2} className="font-body text-sm text-muted-foreground leading-[1.8] mb-10 max-w-lg mx-auto">
+              Are you a passionate and talented hair stylist looking to advance your career? Our salon offers a vibrant environment where you can showcase your skills, learn from experienced stylists, and grow with us.
+            </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-            {/* Phone */}
-            <div className="text-center p-6 rounded-lg bg-background border border-border">
-              <Phone className="w-5 h-5 text-secondary mx-auto mb-3" />
-              <p className="font-body text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Phone</p>
-              <a href="tel:604-715-7888" className="font-body text-sm text-foreground hover:text-secondary transition-colors">
-                604-715-7888
-              </a>
+          {/* Simple contact form */}
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="text-left space-y-5 max-w-md mx-auto"
+          >
+            <div>
+              <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Name</label>
+              <input type="text" className="w-full border border-border bg-background px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your name" />
             </div>
-
-            {/* Address */}
-            <div className="text-center p-6 rounded-lg bg-background border border-border">
-              <MapPin className="w-5 h-5 text-secondary mx-auto mb-3" />
-              <p className="font-body text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Address</p>
-              <p className="font-body text-sm text-foreground">
-                #151 - 6386 No. 3 Rd.<br />Richmond, BC
-              </p>
+            <div>
+              <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Email</label>
+              <input type="email" className="w-full border border-border bg-background px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your email" />
             </div>
-
-            {/* Hours */}
-            <div className="text-center p-6 rounded-lg bg-background border border-border">
-              <Clock className="w-5 h-5 text-secondary mx-auto mb-3" />
-              <p className="font-body text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Hours</p>
-              <p className="font-body text-sm text-foreground">
-                Mon – Sun<br />11:00 am – 7:00 pm
-              </p>
+            <div>
+              <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Message</label>
+              <textarea rows={4} className="w-full border border-border bg-background px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder="Tell us about yourself..." />
             </div>
-          </div>
-
-          {/* Final CTA */}
-          <div className="text-center mt-12">
-            <p className="font-body text-muted-foreground mb-5 max-w-md mx-auto">
-              Ready for your new look? Book an appointment with one of our expert stylists today.
-            </p>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Book Appointment
-            </a>
-          </div>
-
-          {/* Join Our Team */}
-          <div className="mt-16 p-8 rounded-xl bg-background border border-border text-center max-w-2xl mx-auto">
-            <h3 className="font-heading text-xl font-bold text-foreground mb-3">Join Our Team</h3>
-            <p className="font-body text-sm text-muted-foreground leading-relaxed mb-5">
-              Are you a passionate and talented hair stylist looking to advance your career? Our salon offers a vibrant environment where you can showcase your skills, learn from experienced stylists, and grow with us.
-            </p>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-outline text-xs">
-              Contact Us
-            </a>
-          </div>
+            <button type="submit" className="btn-primary w-full gap-2 justify-center">
+              <Send className="w-3.5 h-3.5" /> Send Application
+            </button>
+          </form>
         </div>
       </section>
     </Layout>
