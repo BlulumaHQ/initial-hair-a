@@ -1,16 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 
+const BOOKING_URL =
+  "https://www.fresha.com/a/initial-salon-richmond-6386-no-3-road-kr9spcrw/all-offer?menu=true&rwg_token=AJKvS9UQy7d34XWVYz7Y2UcNMMI0llYMKBzKtJ-ix_hcoOULUtHkYyx4zXbut-9xmCflwhAa8Da7oKG28yDyZbEloWPcwryVjw%3D%3D&gei=7VnqZrP2Aorx0PEPoLbVsQ8";
+const SHOP_URL = "https://www.fresha.com/store/initial-salon-store-ariubv76";
+
 const navLinks = [
   { label: "HOME", href: "#home" },
   { label: "STYLISTS", href: "#stylists" },
   { label: "SERVICES", href: "#services" },
-  { label: "PORTFOLIOS", href: "#portfolios" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "PORTFOLIO", href: "#portfolio" },
+  { label: "JOIN OUR TEAM", href: "#join-team" },
 ];
-
-const BOOKING_URL = "https://initialsalon.com/";
-const SHOP_URL = "https://initialsalon.com/";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -30,7 +30,6 @@ const Header = () => {
 
   const handleNavClick = useCallback((href: string) => {
     setIsOpen(false);
-    // Small delay so mobile menu closes first
     setTimeout(() => {
       const el = document.querySelector(href);
       if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -43,7 +42,7 @@ const Header = () => {
         scrolled ? "bg-background/95 backdrop-blur-md shadow-[0_1px_0_hsl(var(--border))]" : "bg-background"
       }`}
     >
-      <div className="container-site flex items-center justify-between h-[72px]">
+      <div className="container-site flex items-center justify-between h-[68px]">
         {/* Logo */}
         <a
           href="#home"
@@ -53,7 +52,7 @@ const Header = () => {
           <img
             src="https://initialsalon.com/wp-content/uploads/2024/06/initial-Hair-salon-logo.png"
             alt="Initial Salon"
-            className="h-[52px] md:h-[60px] w-auto"
+            className="h-[48px] md:h-[56px] w-auto"
           />
         </a>
 
@@ -64,7 +63,7 @@ const Header = () => {
               key={link.href}
               href={link.href}
               onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-              className="font-body text-[11px] tracking-[0.14em] font-semibold text-foreground/70 hover:text-foreground transition-colors"
+              className="font-body text-[10px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
             >
               {link.label}
             </a>
@@ -73,7 +72,7 @@ const Header = () => {
             href={SHOP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-body text-[11px] tracking-[0.14em] font-semibold text-foreground/70 hover:text-foreground transition-colors"
+            className="font-body text-[10px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
           >
             SHOP
           </a>
@@ -84,7 +83,7 @@ const Header = () => {
           href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:inline-flex btn-primary text-xs py-2.5 px-5"
+          className="hidden lg:inline-flex btn-primary text-[11px] py-2 px-5"
         >
           Book Appointment
         </a>
@@ -101,14 +100,14 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-[72px] bg-background z-40">
+        <div className="lg:hidden fixed inset-0 top-[68px] bg-background z-40">
           <nav className="container-site py-8 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className="font-body text-sm tracking-[0.1em] font-semibold text-foreground py-4 border-b border-border"
+                className="font-body text-sm tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
               >
                 {link.label}
               </a>
@@ -117,7 +116,7 @@ const Header = () => {
               href={SHOP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body text-sm tracking-[0.1em] font-semibold text-foreground py-4 border-b border-border"
+              className="font-body text-sm tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
             >
               SHOP ↗
             </a>
