@@ -1,101 +1,98 @@
-import { Link } from "react-router-dom";
 import { Phone, MapPin, Clock } from "lucide-react";
 
-const navLinks = [
-  { label: "Home", to: "/" },
-  { label: "Stylists", to: "/stylists" },
-  { label: "Services", to: "/services" },
-  { label: "Portfolios", to: "/portfolios" },
-  { label: "Contact", to: "/contact" },
-  { label: "Shop", to: "/shop" },
+const BOOKING_URL = "https://initialsalon.com/";
+
+const footerNav = [
+  { label: "Home", href: "#home" },
+  { label: "Stylists", href: "#stylists" },
+  { label: "Services", href: "#services" },
+  { label: "Portfolios", href: "#portfolios" },
+  { label: "Contact", href: "#contact" },
 ];
 
-const services = ["Cut", "Perm", "Colour", "Treatment", "Shampoo & Blow Dry"];
+const handleAnchor = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  e.preventDefault();
+  const el = document.querySelector(href);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+};
 
 const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-muted/50 border-t border-border">
       <div className="container-site section-padding">
-        {/* Desktop: 5 column grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6">
-          {/* Column 1: Logo & Description */}
+          {/* Col 1: Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="inline-block mb-4">
-              <span className="font-heading text-xl font-bold text-primary-foreground">
-                Initial Salon
-              </span>
-            </Link>
-            <p className="font-body text-sm leading-relaxed opacity-80">
-              Where Japanese and Taiwanese expertise combine for exceptional styling. Step in and immerse yourself in our salon's harmonious and relaxing ambience.
+            <a href="#home" onClick={(e) => handleAnchor(e, "#home")} className="inline-block mb-4">
+              <span className="font-heading text-lg font-bold text-foreground">Initial Salon</span>
+            </a>
+            <p className="font-body text-sm text-muted-foreground leading-relaxed">
+              Where Japanese and Taiwanese expertise combine for exceptional styling in a harmonious and relaxing ambience.
             </p>
           </div>
 
-          {/* Column 2: Empty spacer */}
+          {/* Col 2: Spacer */}
           <div className="hidden lg:block" />
 
-          {/* Column 3: Navigation */}
+          {/* Col 3: Navigation */}
           <div>
-            <h4 className="font-heading text-sm font-bold mb-5 uppercase tracking-wider">
-              Navigation
-            </h4>
+            <h4 className="font-body text-xs font-semibold tracking-[0.12em] uppercase text-foreground mb-5">Navigation</h4>
             <ul className="space-y-3">
-              {navLinks.map((link) => (
-                <li key={link.to}>
-                  <Link
-                    to={link.to}
-                    className="font-body text-sm opacity-80 hover:opacity-100 transition-opacity"
+              {footerNav.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleAnchor(e, link.href)}
+                    className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4: Services */}
+          {/* Col 4: Services */}
           <div>
-            <h4 className="font-heading text-sm font-bold mb-5 uppercase tracking-wider">
-              Services
-            </h4>
+            <h4 className="font-body text-xs font-semibold tracking-[0.12em] uppercase text-foreground mb-5">Services</h4>
             <ul className="space-y-3">
-              {services.map((s) => (
+              {["Cut", "Perm", "Colour", "Treatment", "Shampoo & Blow Dry"].map((s) => (
                 <li key={s}>
-                  <Link
-                    to="/services"
-                    className="font-body text-sm opacity-80 hover:opacity-100 transition-opacity"
+                  <a
+                    href="#services"
+                    onClick={(e) => handleAnchor(e, "#services")}
+                    className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {s}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 5: Contact */}
+          {/* Col 5: Contact */}
           <div>
-            <h4 className="font-heading text-sm font-bold mb-5 uppercase tracking-wider">
-              Contact
-            </h4>
+            <h4 className="font-body text-xs font-semibold tracking-[0.12em] uppercase text-foreground mb-5">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-0.5 flex-shrink-0 opacity-80" />
-                <a href="tel:604-715-7888" className="font-body text-sm opacity-80 hover:opacity-100 transition-opacity">
+                <Phone className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
+                <a href="tel:604-715-7888" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">
                   604-715-7888
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 opacity-80" />
-                <span className="font-body text-sm opacity-80">
+                <MapPin className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
+                <span className="font-body text-sm text-muted-foreground">
                   #151 - 6386 No. 3 Rd.<br />Richmond, BC
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0 opacity-80" />
-                <div className="font-body text-sm opacity-80">
-                  <p>Mon – Fri: 11:00 am – 7:00 pm</p>
-                  <p>Sat – Sun: 11:00 am – 7:00 pm</p>
+                <Clock className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
+                <div className="font-body text-sm text-muted-foreground">
+                  <p>Mon – Fri: 11 am – 7 pm</p>
+                  <p>Sat – Sun: 11 am – 7 pm</p>
                 </div>
               </li>
             </ul>
@@ -103,27 +100,17 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Copyright bar */}
-      <div className="border-t border-primary-foreground/15">
+      {/* Copyright */}
+      <div className="border-t border-border">
         <div className="container-site py-5 text-center">
-          <p className="font-body text-xs opacity-60 leading-relaxed">
+          <p className="font-body text-[11px] text-muted-foreground leading-relaxed">
             © {year} Initial Salon. All rights reserved. |{" "}
             Web Design by{" "}
-            <a
-              href="https://bluluma.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-100 underline"
-            >
+            <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground underline">
               Bluluma
             </a>{" "}
             | Powered by{" "}
-            <a
-              href="https://swiftlift.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-100 underline"
-            >
+            <a href="https://swiftlift.app" target="_blank" rel="noopener noreferrer" className="hover:text-foreground underline">
               SwiftLift
             </a>
           </p>
