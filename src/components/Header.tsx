@@ -116,7 +116,7 @@ const Header = () => {
               href={SHOP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body text-sm tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
+              className="font-body text-[15px] tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
             >
               SHOP ↗
             </a>
