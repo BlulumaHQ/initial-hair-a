@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import ScrollToTop from "./ScrollToTop";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
@@ -12,6 +13,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <Header />
       <main className="flex-1 pt-[68px]">{children}</main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
