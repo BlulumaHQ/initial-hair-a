@@ -478,7 +478,7 @@ const Index = () => {
             ))}
           </div>
 
-          <p className="font-body text-[11px] text-muted-foreground text-center mt-6 tracking-wide">
+          <p className="font-body text-[12px] text-muted-foreground text-center mt-6 tracking-wide">
             Prices may vary depending on hair length, thickness, and stylist.
           </p>
 
