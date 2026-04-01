@@ -589,16 +589,16 @@ const Index = () => {
             className="text-left space-y-5 max-w-md mx-auto"
           >
             <div>
-              <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Name</label>
-              <input type="text" className="w-full border border-border bg-background px-4 py-3.5 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your name" />
+              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Name</label>
+              <input type="text" className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your name" />
             </div>
             <div>
-              <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Email</label>
-              <input type="email" className="w-full border border-border bg-background px-4 py-3.5 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your email" />
+              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Email</label>
+              <input type="email" className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your email" />
             </div>
             <div>
-              <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Message</label>
-              <textarea rows={4} className="w-full border border-border bg-background px-4 py-3.5 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder="Tell us about yourself..." />
+              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Message</label>
+              <textarea rows={4} className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder="Tell us about yourself..." />
             </div>
             <button type="submit" className="btn-primary w-full gap-2 justify-center py-4">
               <Send className="w-3.5 h-3.5" /> Send Application
