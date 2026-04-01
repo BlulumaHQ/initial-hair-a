@@ -47,15 +47,15 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="font-body text-[10px] font-semibold tracking-[0.14em] uppercase text-foreground mb-5">Quick Links</h4>
+            <h4 className="font-body text-[11px] font-semibold tracking-[0.14em] uppercase text-foreground mb-5">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors">
                   Book Appointment
                 </a>
               </li>
               <li>
-                <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors">
                   Shop Products
                 </a>
               </li>
