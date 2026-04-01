@@ -83,7 +83,7 @@ const Header = () => {
           href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:inline-flex btn-primary text-[11px] py-2 px-5"
+          className="hidden lg:inline-flex btn-primary text-[12px] py-2.5 px-6"
         >
           Book Appointment
         </a>
