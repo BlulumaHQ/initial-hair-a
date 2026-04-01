@@ -155,6 +155,8 @@ const HeroSlider = () => {
 
   return (
     <section id="home" className="relative min-h-[85vh] md:min-h-[92vh] flex items-end pb-12 md:pb-24 overflow-hidden">
+      {/* Slide 1 bg color to match the green wall */}
+      {current === 0 && <div className="absolute inset-0 bg-[#4a6b5a]" />}
       <AnimatePresence mode="wait">
         <motion.img
           key={current}
@@ -164,9 +166,9 @@ const HeroSlider = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full ${current === 0 ? "object-contain sm:object-cover" : "object-cover"}`}
           style={{
-            objectPosition: current === 0 ? "center 40%" : slide.objectPosition,
+            objectPosition: current === 0 ? "center center" : "center center",
           }}
         />
       </AnimatePresence>
