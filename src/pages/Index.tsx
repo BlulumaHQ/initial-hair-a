@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Star, Phone, MapPin, Clock, ChevronDown, ChevronUp, Send } from "lucide-react";
 import Layout from "@/components/Layout";
