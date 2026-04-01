@@ -113,12 +113,10 @@ const testimonials = [
 const heroSlides = [
   {
     image: heroSlide1,
-    objectPosition: "center center",
-    content: null, // buttons only
+    content: null, // buttons only — logo image
   },
   {
     image: heroSlide2,
-    objectPosition: "center center",
     content: {
       subtitle: "Japanese & Taiwanese Expertise · Richmond, BC",
       title: "Bring Out the Best in Your Hair",
@@ -126,8 +124,7 @@ const heroSlides = [
     },
   },
   {
-    image: "https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-25.jpg",
-    objectPosition: "center center",
+    image: heroSlide3,
     content: {
       subtitle: "Premium Hair Care · Personalized Service",
       title: "Where Style Meets Sophistication",
