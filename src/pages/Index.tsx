@@ -538,8 +538,8 @@ const Index = () => {
                 <div className="flex items-start gap-4">
                   <MapPin className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
                   <div>
-                    <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Address</p>
-                    <p className="font-body text-sm text-foreground">#151 - 6386 No. 3 Rd., Richmond, BC</p>
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Address</p>
+                    <p className="font-body text-[15px] text-foreground">#151 - 6386 No. 3 Rd., Richmond, BC</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
