@@ -85,15 +85,15 @@ const Footer = () => {
         {/* Mobile compact layout */}
         <div className="md:hidden">
           <a href="#home" onClick={(e) => handleAnchor(e, "#home")} className="inline-block mb-4">
-            <span className="font-heading text-lg font-bold text-foreground">Initial Salon</span>
+            <span className="font-heading text-xl font-bold text-foreground">Initial Salon</span>
           </a>
           <div className="grid grid-cols-2 gap-x-6 gap-y-6">
             <div>
-              <h4 className="font-body text-[10px] font-semibold tracking-[0.14em] uppercase text-foreground mb-3">Navigation</h4>
+              <h4 className="font-body text-[11px] font-semibold tracking-[0.14em] uppercase text-foreground mb-3">Navigation</h4>
               <ul className="space-y-2">
                 {footerNav.map((link) => (
                   <li key={link.href}>
-                    <a href={link.href} onClick={(e) => handleAnchor(e, link.href)} className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <a href={link.href} onClick={(e) => handleAnchor(e, link.href)} className="font-body text-[14px] text-muted-foreground hover:text-foreground transition-colors">
                       {link.label}
                     </a>
                   </li>
@@ -101,24 +101,24 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h4 className="font-body text-[10px] font-semibold tracking-[0.14em] uppercase text-foreground mb-3">Contact</h4>
+              <h4 className="font-body text-[11px] font-semibold tracking-[0.14em] uppercase text-foreground mb-3">Contact</h4>
               <ul className="space-y-2.5">
                 <li className="flex items-start gap-2">
                   <Phone className="w-3 h-3 mt-0.5 text-muted-foreground flex-shrink-0" />
-                  <a href="tel:604-715-7888" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors">604-715-7888</a>
+                  <a href="tel:604-715-7888" className="font-body text-[13px] text-muted-foreground hover:text-foreground transition-colors">604-715-7888</a>
                 </li>
                 <li className="flex items-start gap-2">
                   <MapPin className="w-3 h-3 mt-0.5 text-muted-foreground flex-shrink-0" />
-                  <span className="font-body text-xs text-muted-foreground">#151 - 6386 No. 3 Rd., Richmond, BC</span>
+                  <span className="font-body text-[13px] text-muted-foreground">#151 - 6386 No. 3 Rd., Richmond, BC</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Clock className="w-3 h-3 mt-0.5 text-muted-foreground flex-shrink-0" />
-                  <span className="font-body text-xs text-muted-foreground">Mon – Sun: 11 am – 7 pm</span>
+                  <span className="font-body text-[13px] text-muted-foreground">Mon – Sun: 11 am – 7 pm</span>
                 </li>
               </ul>
               <div className="mt-4 space-y-1.5">
-                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors block">Book Appointment →</a>
-                <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="font-body text-xs text-muted-foreground hover:text-foreground transition-colors block">Shop Products →</a>
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[13px] text-muted-foreground hover:text-foreground transition-colors block">Book Appointment →</a>
+                <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[13px] text-muted-foreground hover:text-foreground transition-colors block">Shop Products →</a>
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ const Footer = () => {
       {/* Copyright */}
       <div className="border-t border-border">
         <div className="container-site py-5 text-center">
-          <p className="font-body text-[11px] text-muted-foreground leading-relaxed">
+          <p className="font-body text-[12px] text-muted-foreground leading-relaxed">
             © 2026 Initial Salon. All rights reserved. |{" "}
             Web Design by{" "}
             <a href="https://bluluma.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground underline underline-offset-2">Bluluma</a>
