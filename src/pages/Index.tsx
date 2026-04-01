@@ -187,44 +187,7 @@ const Index = () => {
         description="Welcome to Initial Hair Salon in Richmond, BC. Japanese and Taiwanese expertise combine for exceptional styling. Book your appointment today."
       />
 
-      {/* ═══════ HERO ═══════ */}
-      <section id="home" className="relative min-h-[85vh] md:min-h-[92vh] flex items-end pb-12 md:pb-24">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-25.jpg)" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/25 to-transparent" />
-        <div className="relative z-10 container-site w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="max-w-lg"
-          >
-            <p className="font-body text-[10px] tracking-[0.3em] uppercase text-background/60 mb-4">
-              Japanese &amp; Taiwanese Expertise · Richmond, BC
-            </p>
-            <h1 className="font-heading text-background leading-[1.05] tracking-tight mb-5" style={{ fontSize: "clamp(2.25rem, 4.5vw + 0.5rem, 3.75rem)" }}>
-              Bring Out the Best in Your Hair
-            </h1>
-            <p className="font-body text-sm md:text-base text-background/75 leading-relaxed mb-8 max-w-sm">
-              Precision meets artistry. Experience personalized styling in a harmonious, relaxing ambience.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-center">
-                Book Appointment
-              </a>
-              <a
-                href="#services"
-                onClick={(e) => { e.preventDefault(); document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="btn-outline border-background/25 text-background hover:bg-background hover:text-foreground text-center"
-              >
-                View Services
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <HeroSlider />
 
       {/* ═══════ ABOUT ═══════ */}
       <section className="py-16 md:py-28 lg:py-32">
