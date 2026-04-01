@@ -363,39 +363,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════ NEWS / PROMOTION ═══════ */}
-      <section className="py-16 md:py-28 lg:py-32">
-        <div className="container-site max-w-3xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
-            <motion.span variants={reveal} custom={0} className="section-label">News</motion.span>
-            <motion.h2 variants={reveal} custom={1} className="section-title">お知らせ</motion.h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.55 }}
-            className="border border-border bg-accent/30 p-8 md:p-12"
-          >
-            <h3 className="font-heading text-lg md:text-xl font-bold text-foreground leading-snug mb-6">
-              新規スタイリストによる割引キャンペーン：パーマ・カラーリングが15%オフ
-            </h3>
-            <p className="font-body text-sm md:text-[15px] text-muted-foreground leading-[2] mb-8">
-              initial ヘアサロンは、ネイティブ日本語話者向けのミートアップを開催しているミングルとコラボレーションを行っており、ミングルに参加された方々には、initial ヘアサロンで利用できるお得なクーポンをお渡ししています。ぜひご参加ください。
-            </p>
-            <a
-              href="https://www.instagram.com/vancouver_mingle/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline text-center inline-flex"
-            >
-              Let's Mingle →
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
       {/* ═══════ TESTIMONIALS ═══════ */}
       <section className="py-16 md:py-28 lg:py-32 bg-accent/40">
         <div className="container-site max-w-4xl">
