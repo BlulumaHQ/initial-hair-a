@@ -35,11 +35,11 @@ const Footer = () => {
           </div>
           <div className="hidden lg:block" />
           <div>
-            <h4 className="font-body text-[10px] font-semibold tracking-[0.14em] uppercase text-foreground mb-5">Navigation</h4>
+            <h4 className="font-body text-[11px] font-semibold tracking-[0.14em] uppercase text-foreground mb-5">Navigation</h4>
             <ul className="space-y-3">
               {footerNav.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} onClick={(e) => handleAnchor(e, link.href)} className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <a href={link.href} onClick={(e) => handleAnchor(e, link.href)} className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors">
                     {link.label}
                   </a>
                 </li>
