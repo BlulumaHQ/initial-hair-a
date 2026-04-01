@@ -185,16 +185,16 @@ const HeroSlider = () => {
             <div className="h-[11.5rem] sm:h-[12.5rem] md:h-[14.5rem] lg:h-[15.5rem] mb-8 flex flex-col justify-end">
               {slide.content && (
                 <>
-                  <p className="font-body text-[10px] tracking-[0.3em] uppercase text-background/60 mb-4">
+                  <p className="font-body text-[11px] tracking-[0.3em] uppercase text-background/60 mb-4">
                     {slide.content.subtitle}
                   </p>
                   <h1
                     className="font-heading text-background leading-[1.05] tracking-tight mb-5"
-                    style={{ fontSize: "clamp(2.25rem, 4.5vw + 0.5rem, 3.75rem)" }}
+                    style={{ fontSize: "clamp(2.5rem, 4.5vw + 0.5rem, 4.25rem)" }}
                   >
                     {slide.content.title}
                   </h1>
-                  <p className="font-body text-sm md:text-base text-background/75 leading-relaxed max-w-sm">
+                  <p className="font-body text-[15px] md:text-base text-background/75 leading-relaxed max-w-sm">
                     {slide.content.description}
                   </p>
                 </>
