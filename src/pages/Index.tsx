@@ -531,8 +531,8 @@ const Index = () => {
                 <div className="flex items-start gap-4">
                   <Phone className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
                   <div>
-                    <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Phone</p>
-                    <a href="tel:604-715-7888" className="font-body text-sm text-foreground hover:text-secondary transition-colors">604-715-7888</a>
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Phone</p>
+                    <a href="tel:604-715-7888" className="font-body text-[15px] text-foreground hover:text-secondary transition-colors">604-715-7888</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
