@@ -269,8 +269,8 @@ const MobileTestimonialCarousel = () => {
                     <Star key={j} className="w-3.5 h-3.5 fill-secondary/60 text-secondary/60" />
                   ))}
                 </div>
-                <p className="font-body text-sm text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
-                <p className="font-body text-xs font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
+                <p className="font-body text-[15px] text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
+                <p className="font-body text-[11px] font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
               </div>
             </div>
           ))}
