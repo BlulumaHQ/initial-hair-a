@@ -125,6 +125,14 @@ const Index = () => {
   const [showAllStylists, setShowAllStylists] = useState(false);
   const [expandedService, setExpandedService] = useState<number | null>(0);
 
+  useEffect(() => {
+    const s = document.createElement("script");
+    s.type = "module";
+    s.src = "https://w.behold.so/widget.js";
+    document.head.append(s);
+    return () => { s.remove(); };
+  }, []);
+
   const visibleStylists = showAllStylists ? stylists : stylists.slice(0, 8);
 
   return (
