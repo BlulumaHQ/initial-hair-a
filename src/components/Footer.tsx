@@ -27,9 +27,9 @@ const Footer = () => {
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6">
           <div className="lg:col-span-1">
             <a href="#home" onClick={(e) => handleAnchor(e, "#home")} className="inline-block mb-4">
-              <span className="font-heading text-lg font-bold text-foreground">Initial Salon</span>
+              <span className="font-heading text-xl font-bold text-foreground">Initial Salon</span>
             </a>
-            <p className="font-body text-sm text-muted-foreground leading-relaxed">
+            <p className="font-body text-[15px] text-muted-foreground leading-relaxed">
               Japanese and Taiwanese expertise for exceptional styling in Richmond, BC.
             </p>
           </div>
