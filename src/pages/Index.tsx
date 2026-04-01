@@ -383,10 +383,10 @@ const Index = () => {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
               <motion.span variants={reveal} custom={0} className="section-label">About</motion.span>
               <motion.h2 variants={reveal} custom={1} className="section-title mb-6">Sculpting Stylish Solutions</motion.h2>
-              <motion.p variants={reveal} custom={2} className="font-body text-muted-foreground leading-[1.8] mb-4 text-[15px]">
+              <motion.p variants={reveal} custom={2} className="font-body text-muted-foreground leading-[1.8] mb-4 text-base">
                 Welcome to Initial Hair Salon, where Japanese and Taiwanese expertise combine for exceptional styling. Our stylists merge precision and innovation to create personalized experiences that exceed expectations.
               </motion.p>
-              <motion.p variants={reveal} custom={3} className="font-body text-muted-foreground leading-[1.8] text-[15px]">
+              <motion.p variants={reveal} custom={3} className="font-body text-muted-foreground leading-[1.8] text-base">
                 Step in and immerse yourself in our salon's harmonious and relaxing ambience. Every visit is crafted to make you feel your very best.
               </motion.p>
             </motion.div>
