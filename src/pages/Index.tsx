@@ -117,21 +117,21 @@ const heroSlides = [
     content: null, // buttons only — logo image
   },
   {
-    image: heroSlide2,
-    imagePositionClassName: "object-center",
-    content: {
-      subtitle: "Japanese & Taiwanese Expertise · Richmond, BC",
-      title: "Bring Out the Best in Your Hair",
-      description: "Precision meets artistry. Experience personalized styling in a harmonious, relaxing ambience.",
-    },
-  },
-  {
     image: heroSlide3,
     imagePositionClassName: "object-center",
     content: {
       subtitle: "Premium Hair Care · Personalized Service",
       title: "Where Style Meets Sophistication",
       description: "Our skilled stylists merge precision and innovation to create looks that exceed expectations.",
+    },
+  },
+  {
+    image: heroSlide2,
+    imagePositionClassName: "object-center",
+    content: {
+      subtitle: "Japanese & Taiwanese Expertise · Richmond, BC",
+      title: "Bring Out the Best in Your Hair",
+      description: "Precision meets artistry. Experience personalized styling in a harmonious, relaxing ambience.",
     },
   },
 ];
