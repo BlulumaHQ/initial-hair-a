@@ -545,8 +545,8 @@ const Index = () => {
                 <div className="flex items-start gap-4">
                   <Clock className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
                   <div>
-                    <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Hours</p>
-                    <p className="font-body text-sm text-foreground">Monday – Sunday: 11:00 am – 7:00 pm</p>
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Hours</p>
+                    <p className="font-body text-[15px] text-foreground">Monday – Sunday: 11:00 am – 7:00 pm</p>
                   </div>
                 </div>
               </div>
