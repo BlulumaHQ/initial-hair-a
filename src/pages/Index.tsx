@@ -468,8 +468,8 @@ const Index = () => {
                   <div className="pb-5">
                     {cat.items.map((item) => (
                       <div key={item.name} className="flex items-baseline justify-between py-2.5">
-                        <span className="font-body text-sm text-foreground">{item.name}</span>
-                        <span className="font-body text-sm text-muted-foreground tabular-nums">{item.price}</span>
+                        <span className="font-body text-[15px] text-foreground">{item.name}</span>
+                        <span className="font-body text-[15px] text-muted-foreground tabular-nums">{item.price}</span>
                       </div>
                     ))}
                   </div>
