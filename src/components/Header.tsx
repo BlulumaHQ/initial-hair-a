@@ -100,7 +100,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-[68px] bg-background z-40">
+        <div className="lg:hidden fixed inset-0 top-[80px] bg-background z-40">
           <nav className="container-site py-8 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
