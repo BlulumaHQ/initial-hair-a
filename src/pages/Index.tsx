@@ -300,36 +300,8 @@ const Index = () => {
       {/* ═══════ PORTFOLIO ═══════ */}
       <section id="portfolio" className="py-24 md:py-32 bg-accent/40">
         <div className="container-site">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-16">
-            <motion.span variants={reveal} custom={0} className="section-label">Our Work</motion.span>
-            <motion.h2 variants={reveal} custom={1} className="section-title">Portfolio</motion.h2>
-          </motion.div>
-
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3"
-          >
-            {portfolioImages.map((img, i) => (
-              <motion.div key={i} variants={reveal} custom={i} className="aspect-square overflow-hidden bg-muted">
-                <img
-                  src={img}
-                  alt={`Portfolio ${i + 1}`}
-                  className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out"
-                  loading="lazy"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Shop promo */}
-          <div className="mt-14 text-center">
-            <p className="font-body text-sm text-muted-foreground leading-relaxed max-w-md mx-auto mb-5">
-              Transform your hair care routine with our top-quality products. Use promo code <span className="font-semibold text-foreground">"ONLINESELL"</span> for 15% off store pickup.
-            </p>
-            <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost text-xs tracking-wider uppercase underline underline-offset-4">
-              Shop Products ↗
-            </a>
-          </div>
+          {/* @ts-ignore */}
+          <behold-widget feed-id="9Cg03AgPL9WyaEb5o8tX"></behold-widget>
         </div>
       </section>
 
