@@ -430,12 +430,12 @@ const Index = () => {
                   />
                 </div>
                 <div className="flex items-center justify-center gap-1.5">
-                  <h3 className="font-heading text-xs md:text-sm font-bold text-foreground tracking-wide">{s.name}</h3>
+                  <h3 className="font-heading text-sm md:text-[15px] font-bold text-foreground tracking-wide">{s.name}</h3>
                   <a href={s.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} Instagram`} className="text-muted-foreground hover:text-foreground transition-colors">
                     <Instagram className="w-3.5 h-3.5" />
                   </a>
                 </div>
-                {s.title && <p className="font-body text-[10px] md:text-[11px] text-muted-foreground mt-0.5 tracking-wider uppercase">{s.title}</p>}
+                {s.title && <p className="font-body text-[11px] md:text-[12px] text-muted-foreground mt-0.5 tracking-wider uppercase">{s.title}</p>}
               </motion.div>
             ))}
           </motion.div>
