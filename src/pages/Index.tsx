@@ -1,31 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Star, Phone, MapPin, Clock, ChevronDown, ChevronUp, Send } from "lucide-react";
+import { Star, Phone, MapPin, Clock, ChevronDown, Send, Instagram } from "lucide-react";
 import Layout from "@/components/Layout";
 import SEOHead from "@/components/SEOHead";
+import useEmblaCarousel from "embla-carousel-react";
 
 const BOOKING_URL =
   "https://www.fresha.com/a/initial-salon-richmond-6386-no-3-road-kr9spcrw/all-offer?menu=true&rwg_token=AJKvS9UQy7d34XWVYz7Y2UcNMMI0llYMKBzKtJ-ix_hcoOULUtHkYyx4zXbut-9xmCflwhAa8Da7oKG28yDyZbEloWPcwryVjw%3D%3D&gei=7VnqZrP2Aorx0PEPoLbVsQ8";
-const SHOP_URL = "https://www.fresha.com/store/initial-salon-store-ariubv76";
 
-/* ── Data ── */
-
+/* ── Stylists Data ── */
 const stylists = [
-  { name: "Ken", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-51.jpg" },
-  { name: "Summer", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-49.jpg" },
-  { name: "James", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-50.jpg" },
-  { name: "Hubert", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-52.jpg" },
-  { name: "Hikaso", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-22.jpg" },
-  { name: "Ayane Oda", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-23.jpg" },
-  { name: "Angus", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-54.jpg" },
-  { name: "Mako", img: "https://initialsalon.com/wp-content/uploads/2025/11/initial-hair-pic-222.jpg" },
-  { name: "Wanda", img: "https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-32.jpg" },
-  { name: "Emi", img: "https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-30.jpg" },
-  { name: "Donna", img: "https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-33.jpg" },
-  { name: "Stella", img: "https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-25.jpg" },
-  { name: "Hiro", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-51.jpg" },
-  { name: "Kuro", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-49.jpg" },
-  { name: "Meg", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-50.jpg" },
+  { name: "KEN", title: "HR Manager", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-51.jpg", instagram: "https://www.instagram.com/ken07kei/" },
+  { name: "SUMMER", title: "Manager", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-49.jpg", instagram: "https://www.instagram.com/hellosum.mer/" },
+  { name: "JAMES", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-50.jpg", instagram: "https://www.instagram.com/jamesrickking/" },
+  { name: "HUBERT", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-52.jpg", instagram: "https://www.instagram.com/hubert_hairstar/" },
+  { name: "HIKASO", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-22.jpg", instagram: "https://www.instagram.com/hikasoooo/" },
+  { name: "Ayane Oda", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2025/11/initial-hair-pic-222.jpg", instagram: "https://www.instagram.com/ayane_oda" },
+  { name: "ANGUS", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-23.jpg", instagram: "https://www.instagram.com/angus_hero/" },
+  { name: "MAKO", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-54.jpg", instagram: "https://www.instagram.com/mako_vancouver_hairstylist/" },
+  { name: "Wanda", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2025/03/%E6%9C%AA%E5%91%BD%E5%90%8D%E8%A8%AD%E8%A8%88-6.jpg", instagram: "https://www.instagram.com/wanda.hairstylist.vancouver" },
+  { name: "Emi", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2025/11/initial-hair-pic-1333.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
+  { name: "DONNA", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-42.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
+  { name: "STELLA", title: "G.M", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-20.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
+  { name: "Hiro", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/09/initial-hair-hero-6.jpg", instagram: "https://www.instagram.com/hiro_masa.hair" },
+  { name: "Kuro", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2025/03/%E6%9C%AA%E5%91%BD%E5%90%8D%E8%A8%AD%E8%A8%88-5.jpg", instagram: "https://www.instagram.com/kuro0084" },
+  { name: "Meg", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2026/01/initial-hair-pic-1888.png", instagram: "https://www.instagram.com/iki_meguo" },
 ];
 
 const serviceCategories = [
@@ -72,20 +71,17 @@ const serviceCategories = [
   },
 ];
 
-const portfolioImages = [
-  "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-51.jpg",
-  "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-49.jpg",
-  "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-50.jpg",
-  "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-52.jpg",
-  "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-22.jpg",
-  "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-23.jpg",
-  "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-54.jpg",
-  "https://initialsalon.com/wp-content/uploads/2025/11/initial-hair-pic-222.jpg",
-];
-
 const testimonials = [
   {
-    text: "The hairstylist Summer did the lightening and coloring for my hair, she is awesome! She spent time with you to discuss what color is right for you and it looks so good!",
+    text: "I am so happy with the results! This was my first time getting my hair dyed and I was nervous because I have very curly hair. Ayaka was so kind, she explained the process and she knew how to style curls! Throughout the whole process she was very considerate and I love how my hair turned out! Definitely recommend!",
+    author: "Tania L.",
+  },
+  {
+    text: "I recently visited Mako for a haircut, and I couldn't be happier with the experience. Mako provided excellent suggestions on which hairstyle would suit me best. He was incredibly attentive, paid great attention to detail, and was thorough with his cut. I left feeling confident and satisfied with the results. Highly recommend!",
+    author: "David",
+  },
+  {
+    text: "The hairstylist Summer did the lightening and coloring for my hair, she is awesome! She spent time with you to discuss what color is right for you and it looks so good! I will definitely go back for her 😊",
     author: "Ming H.",
   },
   {
@@ -97,16 +93,16 @@ const testimonials = [
     author: "Kathy R.",
   },
   {
-    text: "Hikaso did an amazing job with my hair colouring. The color is exactly what I have in mind. I have a sensitive scalp, yet my scalp feels totally fine.",
+    text: "Hikaso did an amazing job with my hair colouring. The color is exactly what I have in mind. I have a sensitive scalp, yet my scalp feels totally fine. I would recommend him to all my friends and family.",
     author: "Claire L.",
   },
   {
-    text: "Mako was so nice and he definitely gave me what I wanted for my perm! He is really easy to talk to, very accommodating and made me feel very comfortable.",
+    text: "Mako was so nice and he definitely gave me what I wanted for my perm! He is really easy to talk to, very accommodating and made me feel very comfortable throughout the time I was there!",
     author: "Vincent",
   },
   {
-    text: "I am so happy with the results! This was my first time getting my hair dyed and I was nervous because I have very curly hair. Ayaka was so kind, she explained the process and knew how to style curls!",
-    author: "Tania L.",
+    text: "今回もありがとうございました😊！ 美容院実は緊張しがちなのですが、いつもリラックスできて、完成もいつも自分の想像を超えていて、、、本当にありがとうございます〜🌸次はカラー楽しみにしています♪",
+    author: "Tomishige H.",
   },
 ];
 
@@ -120,9 +116,58 @@ const reveal = {
   }),
 };
 
+/* ── Mobile Testimonial Carousel ── */
+const MobileTestimonialCarousel = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi, onSelect]);
+
+  return (
+    <div>
+      <div ref={emblaRef} className="overflow-hidden">
+        <div className="flex">
+          {testimonials.map((t, i) => (
+            <div key={i} className="flex-[0_0_100%] min-w-0 px-2">
+              <div className="pl-5 border-l border-border py-2">
+                <div className="flex gap-0.5 mb-3">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="w-3.5 h-3.5 fill-secondary/60 text-secondary/60" />
+                  ))}
+                </div>
+                <p className="font-body text-sm text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
+                <p className="font-body text-xs font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-6">
+        {testimonials.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => emblaApi?.scrollTo(i)}
+            className={`w-2 h-2 rounded-full transition-colors ${i === selectedIndex ? "bg-foreground" : "bg-border"}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 /* ── Page ── */
 const Index = () => {
-  const [showAllStylists, setShowAllStylists] = useState(false);
   const [expandedService, setExpandedService] = useState<number | null>(0);
 
   useEffect(() => {
@@ -133,8 +178,6 @@ const Index = () => {
     return () => { s.remove(); };
   }, []);
 
-  const visibleStylists = showAllStylists ? stylists : stylists.slice(0, 8);
-
   return (
     <Layout>
       <SEOHead
@@ -143,7 +186,7 @@ const Index = () => {
       />
 
       {/* ═══════ HERO ═══════ */}
-      <section id="home" className="relative min-h-[92vh] flex items-end pb-16 md:pb-24">
+      <section id="home" className="relative min-h-[85vh] md:min-h-[92vh] flex items-end pb-12 md:pb-24">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url(https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-25.jpg)" }}
@@ -182,9 +225,9 @@ const Index = () => {
       </section>
 
       {/* ═══════ ABOUT ═══════ */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 md:py-28 lg:py-32">
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
               <motion.span variants={reveal} custom={0} className="section-label">About</motion.span>
               <motion.h2 variants={reveal} custom={1} className="section-title mb-6">Sculpting Stylish Solutions</motion.h2>
@@ -213,20 +256,20 @@ const Index = () => {
       </section>
 
       {/* ═══════ STYLISTS ═══════ */}
-      <section id="stylists" className="py-24 md:py-32 bg-accent/40">
+      <section id="stylists" className="py-16 md:py-28 lg:py-32 bg-accent/40">
         <div className="container-site">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-16">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
             <motion.span variants={reveal} custom={0} className="section-label">Our Team</motion.span>
             <motion.h2 variants={reveal} custom={1} className="section-title">Stylists</motion.h2>
           </motion.div>
 
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-10 md:gap-x-6 md:gap-y-12"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-8 md:gap-x-5 md:gap-y-10"
           >
-            {visibleStylists.map((s, i) => (
-              <motion.div key={`${s.name}-${i}`} variants={reveal} custom={i} className="text-center group">
-                <div className="aspect-[3/4] overflow-hidden mb-4 bg-muted">
+            {stylists.map((s, i) => (
+              <motion.div key={s.name} variants={reveal} custom={i} className="text-center group">
+                <div className="aspect-[3/4] overflow-hidden mb-3 bg-muted">
                   <img
                     src={s.img}
                     alt={s.name}
@@ -234,36 +277,26 @@ const Index = () => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-heading text-sm font-bold text-foreground tracking-wide">{s.name}</h3>
-                <p className="font-body text-[11px] text-muted-foreground mt-1 tracking-wider uppercase">Stylist</p>
+                <div className="flex items-center justify-center gap-1.5">
+                  <h3 className="font-heading text-xs md:text-sm font-bold text-foreground tracking-wide">{s.name}</h3>
+                  <a href={s.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} Instagram`} className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Instagram className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+                {s.title && <p className="font-body text-[10px] md:text-[11px] text-muted-foreground mt-0.5 tracking-wider uppercase">{s.title}</p>}
               </motion.div>
             ))}
           </motion.div>
-
-          {stylists.length > 8 && (
-            <div className="text-center mt-10">
-              <button onClick={() => setShowAllStylists(!showAllStylists)} className="btn-ghost gap-2 text-xs tracking-wider uppercase">
-                {showAllStylists ? (<>Show Less <ChevronUp className="w-3.5 h-3.5" /></>) : (<>View All Stylists <ChevronDown className="w-3.5 h-3.5" /></>)}
-              </button>
-            </div>
-          )}
         </div>
       </section>
 
       {/* ═══════ SERVICES ═══════ */}
-      <section id="services" className="py-24 md:py-32">
+      <section id="services" className="py-16 md:py-28 lg:py-32">
         <div className="container-site max-w-2xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-16">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
             <motion.span variants={reveal} custom={0} className="section-label">What We Offer</motion.span>
             <motion.h2 variants={reveal} custom={1} className="section-title">Services &amp; Pricing</motion.h2>
           </motion.div>
-
-          {/* Promo */}
-          <div className="mb-10 py-3 px-5 border-l-2 border-secondary/40 bg-accent/30">
-            <p className="font-body text-sm text-foreground">
-              New stylist discount — <span className="font-semibold">15% off perm &amp; colouring</span>
-            </p>
-          </div>
 
           {/* Accordion */}
           <div className="divide-y divide-border border-t border-b border-border">
@@ -297,31 +330,82 @@ const Index = () => {
             Prices may vary depending on hair length, thickness, and stylist.
           </p>
 
-          <div className="text-center mt-10">
+          <div className="text-center mt-8 mb-12">
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
               Book Appointment
             </a>
+          </div>
+
+          {/* ── Policy Block ── */}
+          <div className="border-t border-border pt-8">
+            <h3 className="font-heading text-sm font-bold text-foreground mb-4 tracking-wide">Cancellation &amp; Reschedule Policy</h3>
+            <div className="space-y-3 font-body text-xs md:text-[13px] text-muted-foreground leading-[1.9]">
+              <p>Cancellations or reschedules must be made at least <strong className="text-foreground">48 hours</strong> prior to the appointment.</p>
+              <p>Failure to do so will result in a penalty charge of <strong className="text-foreground">30%</strong> of the booked service.</p>
+              <p>Late arrivals exceeding <strong className="text-foreground">15 minutes</strong> may require rescheduling and will be considered a policy violation.</p>
+              <p>For any changes, cancellations, or queries, please contact us via DM on Instagram or by phone.</p>
+              <p>Your credit card information is securely stored and will only be used in the event of no-shows or violations of our cancellation policy.</p>
+              <p className="pt-1 italic">Thank you for your understanding and cooperation.</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ═══════ PORTFOLIO ═══════ */}
-      <section id="portfolio" className="py-24 md:py-32 bg-accent/40">
+      <section id="portfolio" className="py-16 md:py-28 lg:py-32 bg-accent/40">
         <div className="container-site">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
+            <motion.span variants={reveal} custom={0} className="section-label">Our Work</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title">Portfolio</motion.h2>
+          </motion.div>
           {/* @ts-ignore */}
           <behold-widget feed-id="9Cg03AgPL9WyaEb5o8tX"></behold-widget>
         </div>
       </section>
 
+      {/* ═══════ NEWS / PROMOTION ═══════ */}
+      <section className="py-16 md:py-28 lg:py-32">
+        <div className="container-site max-w-3xl">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
+            <motion.span variants={reveal} custom={0} className="section-label">News</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title">お知らせ</motion.h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.55 }}
+            className="border border-border bg-accent/30 p-8 md:p-12"
+          >
+            <h3 className="font-heading text-lg md:text-xl font-bold text-foreground leading-snug mb-6">
+              新規スタイリストによる割引キャンペーン：パーマ・カラーリングが15%オフ
+            </h3>
+            <p className="font-body text-sm md:text-[15px] text-muted-foreground leading-[2] mb-8">
+              initial ヘアサロンは、ネイティブ日本語話者向けのミートアップを開催しているミングルとコラボレーションを行っており、ミングルに参加された方々には、initial ヘアサロンで利用できるお得なクーポンをお渡ししています。ぜひご参加ください。
+            </p>
+            <a
+              href="https://www.instagram.com/vancouver_mingle/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline text-center inline-flex"
+            >
+              Let's Mingle →
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ═══════ TESTIMONIALS ═══════ */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 md:py-28 lg:py-32 bg-accent/40">
         <div className="container-site max-w-4xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-16">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
             <motion.span variants={reveal} custom={0} className="section-label">Client Love</motion.span>
             <motion.h2 variants={reveal} custom={1} className="section-title">What Our Clients Say</motion.h2>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Desktop grid */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="hidden md:grid grid-cols-2 gap-8">
             {testimonials.map((t, i) => (
               <motion.div key={t.author} variants={reveal} custom={i} className="relative pl-5 border-l border-border">
                 <div className="flex gap-0.5 mb-3">
@@ -334,13 +418,18 @@ const Index = () => {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Mobile carousel */}
+          <div className="md:hidden">
+            <MobileTestimonialCarousel />
+          </div>
         </div>
       </section>
 
       {/* ═══════ CONTACT + INFO ═══════ */}
-      <section className="py-24 md:py-32 bg-accent/40">
+      <section className="py-16 md:py-28 lg:py-32">
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
             {/* Left — info */}
             <div>
               <span className="section-label">Visit Us</span>
@@ -378,11 +467,11 @@ const Index = () => {
             </div>
 
             {/* Right — map */}
-            <div className="aspect-square lg:aspect-auto overflow-hidden bg-muted">
+            <div className="aspect-video lg:aspect-auto overflow-hidden bg-muted">
               <iframe
                 title="Initial Salon Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2610.5!2d-123.1368!3d49.1707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDEwJzE0LjUiTiAxMjPCsDA4JzEyLjUiVw!5e0!3m2!1sen!2sca!4v1700000000000"
-                className="w-full h-full min-h-[320px] border-0"
+                className="w-full h-full min-h-[280px] border-0"
                 loading="lazy"
                 allowFullScreen
               />
@@ -392,13 +481,13 @@ const Index = () => {
       </section>
 
       {/* ═══════ JOIN OUR TEAM ═══════ */}
-      <section id="join-team" className="py-24 md:py-32">
+      <section id="join-team" className="py-16 md:py-28 lg:py-32 bg-accent/40">
         <div className="container-site max-w-2xl text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
             <motion.span variants={reveal} custom={0} className="section-label">Careers</motion.span>
             <motion.h2 variants={reveal} custom={1} className="section-title mb-6">Join Our Team</motion.h2>
-            <motion.p variants={reveal} custom={2} className="font-body text-sm text-muted-foreground leading-[1.8] mb-10 max-w-lg mx-auto">
-              Are you a passionate and talented hair stylist looking to advance your career? Our salon offers a vibrant environment where you can showcase your skills, learn from experienced stylists, and grow with us.
+            <motion.p variants={reveal} custom={2} className="font-body text-sm md:text-[15px] text-muted-foreground leading-[1.9] mb-10 max-w-xl mx-auto">
+              Are you a passionate and talented hair stylist looking to advance your career? At Initial Salon, we are always on the lookout for creative professionals to join our dynamic team. Our salon offers a vibrant environment where you can showcase your skills, learn from experienced stylists, and grow with us. If you have a keen eye for detail, a dedication to customer satisfaction, and a love for the art of hairdressing, we want to hear from you! Fill out the form below to apply and take the first step toward an exciting new chapter in your career.
             </motion.p>
           </motion.div>
 
@@ -409,17 +498,17 @@ const Index = () => {
           >
             <div>
               <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Name</label>
-              <input type="text" className="w-full border border-border bg-background px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your name" />
+              <input type="text" className="w-full border border-border bg-background px-4 py-3.5 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your name" />
             </div>
             <div>
               <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Email</label>
-              <input type="email" className="w-full border border-border bg-background px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your email" />
+              <input type="email" className="w-full border border-border bg-background px-4 py-3.5 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your email" />
             </div>
             <div>
               <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Message</label>
-              <textarea rows={4} className="w-full border border-border bg-background px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder="Tell us about yourself..." />
+              <textarea rows={4} className="w-full border border-border bg-background px-4 py-3.5 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder="Tell us about yourself..." />
             </div>
-            <button type="submit" className="btn-primary w-full gap-2 justify-center">
+            <button type="submit" className="btn-primary w-full gap-2 justify-center py-4">
               <Send className="w-3.5 h-3.5" /> Send Application
             </button>
           </form>
