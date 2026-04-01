@@ -108,6 +108,128 @@ const testimonials = [
   },
 ];
 
+/* ── Hero slides data ── */
+const heroSlides = [
+  {
+    image: heroSlide1,
+    objectPosition: "center center",
+    content: null, // buttons only
+  },
+  {
+    image: heroSlide2,
+    objectPosition: "center center",
+    content: {
+      subtitle: "Japanese & Taiwanese Expertise · Richmond, BC",
+      title: "Bring Out the Best in Your Hair",
+      description: "Precision meets artistry. Experience personalized styling in a harmonious, relaxing ambience.",
+    },
+  },
+  {
+    image: "https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-25.jpg",
+    objectPosition: "center center",
+    content: {
+      subtitle: "Premium Hair Care · Personalized Service",
+      title: "Where Style Meets Sophistication",
+      description: "Our skilled stylists merge precision and innovation to create looks that exceed expectations.",
+    },
+  },
+];
+
+/* ── Hero Slider Component ── */
+const HeroSlider = () => {
+  const [current, setCurrent] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval>>();
+
+  const next = useCallback(() => setCurrent((c) => (c + 1) % heroSlides.length), []);
+
+  useEffect(() => {
+    timerRef.current = setInterval(next, 6000);
+    return () => clearInterval(timerRef.current);
+  }, [next]);
+
+  const goTo = (i: number) => {
+    setCurrent(i);
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(next, 6000);
+  };
+
+  const slide = heroSlides[current];
+
+  return (
+    <section id="home" className="relative min-h-[85vh] md:min-h-[92vh] flex items-end pb-12 md:pb-24 overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={current}
+          src={slide.image}
+          alt="Initial Salon"
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            objectPosition: current === 0 ? "center 40%" : slide.objectPosition,
+          }}
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/25 to-transparent" />
+
+      <div className="relative z-10 container-site w-full">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="max-w-lg"
+          >
+            {slide.content && (
+              <>
+                <p className="font-body text-[10px] tracking-[0.3em] uppercase text-background/60 mb-4">
+                  {slide.content.subtitle}
+                </p>
+                <h1
+                  className="font-heading text-background leading-[1.05] tracking-tight mb-5"
+                  style={{ fontSize: "clamp(2.25rem, 4.5vw + 0.5rem, 3.75rem)" }}
+                >
+                  {slide.content.title}
+                </h1>
+                <p className="font-body text-sm md:text-base text-background/75 leading-relaxed mb-8 max-w-sm">
+                  {slide.content.description}
+                </p>
+              </>
+            )}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-center">
+                Book Appointment
+              </a>
+              <a
+                href="#services"
+                onClick={(e) => { e.preventDefault(); document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" }); }}
+                className="btn-outline border-background/25 text-background hover:bg-background hover:text-foreground text-center"
+              >
+                View Services
+              </a>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Slide indicators */}
+        <div className="flex gap-2 mt-8">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`h-[3px] rounded-full transition-all duration-500 ${i === current ? "w-8 bg-background" : "w-4 bg-background/40"}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /* ── Reveal helper ── */
 const reveal = {
   hidden: { opacity: 0, y: 16 },
