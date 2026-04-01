@@ -459,8 +459,8 @@ const Index = () => {
                   className="w-full flex items-center justify-between py-5 text-left group"
                 >
                   <div>
-                    <span className="font-heading text-base font-bold text-foreground">{cat.title}</span>
-                    {cat.note && <span className="block font-body text-[11px] text-muted-foreground mt-0.5">{cat.note}</span>}
+                    <span className="font-heading text-[17px] font-bold text-foreground">{cat.title}</span>
+                    {cat.note && <span className="block font-body text-[12px] text-muted-foreground mt-0.5">{cat.note}</span>}
                   </div>
                   <ChevronDown className={`w-4 h-4 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${expandedService === ci ? "rotate-180" : ""}`} />
                 </button>
