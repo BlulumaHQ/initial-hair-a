@@ -113,7 +113,7 @@ const testimonials = [
 const heroSlides = [
   {
     image: heroSlide1,
-    imagePositionClassName: "object-[54%_center] sm:object-[52%_center] lg:object-center",
+    imagePositionClassName: "object-[49%_center] sm:object-[50%_center] lg:object-center",
     content: null, // buttons only — logo image
   },
   {
