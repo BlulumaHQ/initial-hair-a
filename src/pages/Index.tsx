@@ -113,10 +113,12 @@ const testimonials = [
 const heroSlides = [
   {
     image: heroSlide1,
+    imagePositionClassName: "object-[54%_center] sm:object-[52%_center] lg:object-center",
     content: null, // buttons only — logo image
   },
   {
     image: heroSlide2,
+    imagePositionClassName: "object-center",
     content: {
       subtitle: "Japanese & Taiwanese Expertise · Richmond, BC",
       title: "Bring Out the Best in Your Hair",
@@ -125,6 +127,7 @@ const heroSlides = [
   },
   {
     image: heroSlide3,
+    imagePositionClassName: "object-center",
     content: {
       subtitle: "Premium Hair Care · Personalized Service",
       title: "Where Style Meets Sophistication",
@@ -155,8 +158,6 @@ const HeroSlider = () => {
 
   return (
     <section id="home" className="relative min-h-[85vh] md:min-h-[92vh] flex items-end pb-12 md:pb-24 overflow-hidden">
-      {/* Slide 1 bg color to match the green wall */}
-      {current === 0 && <div className="absolute inset-0 bg-[#4a6b5a]" />}
       <AnimatePresence mode="wait">
         <motion.img
           key={current}
@@ -166,10 +167,7 @@ const HeroSlider = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className={`absolute inset-0 w-full h-full ${current === 0 ? "object-contain sm:object-cover" : "object-cover"}`}
-          style={{
-            objectPosition: current === 0 ? "center center" : "center center",
-          }}
+          className={`absolute inset-0 w-full h-full object-cover ${slide.imagePositionClassName}`}
         />
       </AnimatePresence>
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/25 to-transparent" />
@@ -184,22 +182,24 @@ const HeroSlider = () => {
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             className="max-w-lg"
           >
-            {slide.content && (
-              <>
-                <p className="font-body text-[10px] tracking-[0.3em] uppercase text-background/60 mb-4">
-                  {slide.content.subtitle}
-                </p>
-                <h1
-                  className="font-heading text-background leading-[1.05] tracking-tight mb-5"
-                  style={{ fontSize: "clamp(2.25rem, 4.5vw + 0.5rem, 3.75rem)" }}
-                >
-                  {slide.content.title}
-                </h1>
-                <p className="font-body text-sm md:text-base text-background/75 leading-relaxed mb-8 max-w-sm">
-                  {slide.content.description}
-                </p>
-              </>
-            )}
+            <div className="h-[11.5rem] sm:h-[12.5rem] md:h-[14.5rem] lg:h-[15.5rem] mb-8 flex flex-col justify-end">
+              {slide.content && (
+                <>
+                  <p className="font-body text-[10px] tracking-[0.3em] uppercase text-background/60 mb-4">
+                    {slide.content.subtitle}
+                  </p>
+                  <h1
+                    className="font-heading text-background leading-[1.05] tracking-tight mb-5"
+                    style={{ fontSize: "clamp(2.25rem, 4.5vw + 0.5rem, 3.75rem)" }}
+                  >
+                    {slide.content.title}
+                  </h1>
+                  <p className="font-body text-sm md:text-base text-background/75 leading-relaxed max-w-sm">
+                    {slide.content.description}
+                  </p>
+                </>
+              )}
+            </div>
             <div className="flex flex-col sm:flex-row gap-3">
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-center">
                 Book Appointment
