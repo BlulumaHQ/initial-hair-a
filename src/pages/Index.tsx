@@ -7,6 +7,8 @@ import useEmblaCarousel from "embla-carousel-react";
 import heroSlide1 from "@/assets/hero-slide-1.webp";
 import heroSlide2 from "@/assets/hero-slide-2.webp";
 import heroSlide3 from "@/assets/hero-slide-3.webp";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { translations } from "@/i18n/translations";
 
 const BOOKING_URL =
   "https://www.fresha.com/a/initial-salon-richmond-6386-no-3-road-kr9spcrw/all-offer?menu=true&rwg_token=AJKvS9UQy7d34XWVYz7Y2UcNMMI0llYMKBzKtJ-ix_hcoOULUtHkYyx4zXbut-9xmCflwhAa8Da7oKG28yDyZbEloWPcwryVjw%3D%3D&gei=7VnqZrP2Aorx0PEPoLbVsQ8";
@@ -26,87 +28,18 @@ const stylists = [
   { name: "DONNA", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-42.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
   { name: "STELLA", title: "G.M", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-20.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
   { name: "Hiro", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/09/initial-hair-hero-6.jpg", instagram: "https://www.instagram.com/hiro_masa.hair" },
-  
   { name: "Meg", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2026/01/initial-hair-pic-1888.png", instagram: "https://www.instagram.com/iki_meguo" },
 ];
 
-const serviceCategories = [
-  {
-    title: "Cut",
-    note: "Includes shampoo & blow-dry",
-    items: [
-      { name: "Men Cut", price: "$55 – $80" },
-      { name: "Women Cut", price: "$60 – $80" },
-    ],
-  },
-  {
-    title: "Perm",
-    note: "Does not include hair cut, shampoo & blow-dry",
-    items: [
-      { name: "Japanese Perm", price: "From $110" },
-      { name: "Japanese Straight Perm", price: "From $250" },
-      { name: "Digital Perm", price: "From $250" },
-    ],
-  },
-  {
-    title: "Colour",
-    note: "Does not include shampoo & blow-dry",
-    items: [
-      { name: "Retouch", price: "From $95" },
-      { name: "Colour", price: "From $95" },
-      { name: "Bleach + Colour", price: "From $360" },
-      { name: "Highlight / Balayage", price: "From $400" },
-    ],
-  },
-  {
-    title: "Treatment",
-    note: "Does not include shampoo price",
-    items: [
-      { name: "Nakano Treatment", price: "From $120" },
-      { name: "Tokio Treatment", price: "From $130" },
-      { name: "Scalp Treatment", price: "From $120" },
-    ],
-  },
-  {
-    title: "Other",
-    note: "",
-    items: [{ name: "Shampoo & Blow Dry", price: "From $45" }],
-  },
-];
-
 const testimonials = [
-  {
-    text: "I am so happy with the results! This was my first time getting my hair dyed and I was nervous because I have very curly hair. Ayaka was so kind, she explained the process and she knew how to style curls! Throughout the whole process she was very considerate and I love how my hair turned out! Definitely recommend!",
-    author: "Tania L.",
-  },
-  {
-    text: "I recently visited Mako for a haircut, and I couldn't be happier with the experience. Mako provided excellent suggestions on which hairstyle would suit me best. He was incredibly attentive, paid great attention to detail, and was thorough with his cut. I left feeling confident and satisfied with the results. Highly recommend!",
-    author: "David",
-  },
-  {
-    text: "The hairstylist Summer did the lightening and coloring for my hair, she is awesome! She spent time with you to discuss what color is right for you and it looks so good! I will definitely go back for her 😊",
-    author: "Ming H.",
-  },
-  {
-    text: "I have curly wavy hair, and Ken was knowledgeable on how to handle colour on my hair to ensure that hair damage is controlled; it was a pleasure to see my hair being taken care of!",
-    author: "Angela T.",
-  },
-  {
-    text: "I always enjoy my visit to Initial Salon... the atmosphere is so calming & relaxing. As usual I leave feeling like a million dollars, and absolutely love my haircut.",
-    author: "Kathy R.",
-  },
-  {
-    text: "Hikaso did an amazing job with my hair colouring. The color is exactly what I have in mind. I have a sensitive scalp, yet my scalp feels totally fine. I would recommend him to all my friends and family.",
-    author: "Claire L.",
-  },
-  {
-    text: "Mako was so nice and he definitely gave me what I wanted for my perm! He is really easy to talk to, very accommodating and made me feel very comfortable throughout the time I was there!",
-    author: "Vincent",
-  },
-  {
-    text: "今回もありがとうございました😊！ 美容院実は緊張しがちなのですが、いつもリラックスできて、完成もいつも自分の想像を超えていて、、、本当にありがとうございます〜🌸次はカラー楽しみにしています♪",
-    author: "Tomishige H.",
-  },
+  { text: "I am so happy with the results! This was my first time getting my hair dyed and I was nervous because I have very curly hair. Ayaka was so kind, she explained the process and she knew how to style curls! Throughout the whole process she was very considerate and I love how my hair turned out! Definitely recommend!", author: "Tania L." },
+  { text: "I recently visited Mako for a haircut, and I couldn't be happier with the experience. Mako provided excellent suggestions on which hairstyle would suit me best. He was incredibly attentive, paid great attention to detail, and was thorough with his cut. I left feeling confident and satisfied with the results. Highly recommend!", author: "David" },
+  { text: "The hairstylist Summer did the lightening and coloring for my hair, she is awesome! She spent time with you to discuss what color is right for you and it looks so good! I will definitely go back for her 😊", author: "Ming H." },
+  { text: "I have curly wavy hair, and Ken was knowledgeable on how to handle colour on my hair to ensure that hair damage is controlled; it was a pleasure to see my hair being taken care of!", author: "Angela T." },
+  { text: "I always enjoy my visit to Initial Salon... the atmosphere is so calming & relaxing. As usual I leave feeling like a million dollars, and absolutely love my haircut.", author: "Kathy R." },
+  { text: "Hikaso did an amazing job with my hair colouring. The color is exactly what I have in mind. I have a sensitive scalp, yet my scalp feels totally fine. I would recommend him to all my friends and family.", author: "Claire L." },
+  { text: "Mako was so nice and he definitely gave me what I wanted for my perm! He is really easy to talk to, very accommodating and made me feel very comfortable throughout the time I was there!", author: "Vincent" },
+  { text: "今回もありがとうございました😊！ 美容院実は緊張しがちなのですが、いつもリラックスできて、完成もいつも自分の想像を超えていて、、、本当にありがとうございます〜🌸次はカラー楽しみにしています♪", author: "Tomishige H." },
 ];
 
 /* ── Hero slides data ── */
@@ -114,25 +47,17 @@ const heroSlides = [
   {
     image: heroSlide1,
     imagePositionClassName: "object-[49%_center] sm:object-[50%_center] lg:object-center",
-    content: null, // buttons only — logo image
+    content: null,
   },
   {
     image: heroSlide3,
     imagePositionClassName: "object-center",
-    content: {
-      subtitle: "Premium Hair Care · Personalized Service",
-      title: "Where Style Meets Sophistication",
-      description: "Our skilled stylists merge precision and innovation to create looks that exceed expectations.",
-    },
+    contentKey: "slide2" as const,
   },
   {
     image: heroSlide2,
     imagePositionClassName: "object-center",
-    content: {
-      subtitle: "Japanese & Taiwanese Expertise · Richmond, BC",
-      title: "Bring Out the Best in Your Hair",
-      description: "Precision meets artistry. Experience personalized styling in a harmonious, relaxing ambience.",
-    },
+    contentKey: "slide3" as const,
   },
 ];
 
@@ -140,6 +65,7 @@ const heroSlides = [
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
+  const { t } = useLanguage();
 
   const next = useCallback(() => setCurrent((c) => (c + 1) % heroSlides.length), []);
 
@@ -155,6 +81,7 @@ const HeroSlider = () => {
   };
 
   const slide = heroSlides[current];
+  const content = slide.content === null ? null : slide.contentKey ? translations.hero[slide.contentKey] : null;
 
   return (
     <section id="home" className="relative min-h-[85vh] md:min-h-[92vh] flex items-end pb-12 md:pb-24 overflow-hidden">
@@ -183,33 +110,33 @@ const HeroSlider = () => {
             className="max-w-lg"
           >
             <div className="h-[11.5rem] sm:h-[12.5rem] md:h-[14.5rem] lg:h-[15.5rem] mb-8 flex flex-col justify-end">
-              {slide.content && (
+              {content && (
                 <>
                   <p className="font-body text-[11px] tracking-[0.3em] uppercase text-background/60 mb-4">
-                    {slide.content.subtitle}
+                    {t(content.subtitle)}
                   </p>
                   <h1
                     className="font-heading text-background leading-[1.05] tracking-tight mb-5"
                     style={{ fontSize: "clamp(2.5rem, 4.5vw + 0.5rem, 4.25rem)" }}
                   >
-                    {slide.content.title}
+                    {t(content.title)}
                   </h1>
                   <p className="font-body text-[15px] md:text-base text-background/75 leading-relaxed max-w-sm">
-                    {slide.content.description}
+                    {t(content.description)}
                   </p>
                 </>
               )}
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-center">
-                Book Appointment
+                {t(translations.nav.bookAppointment)}
               </a>
               <a
                 href="#services"
                 onClick={(e) => { e.preventDefault(); document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" }); }}
                 className="btn-outline border-background/25 text-background hover:bg-background hover:text-foreground text-center"
               >
-                View Services
+                {t(translations.hero.viewServices)}
               </a>
             </div>
           </motion.div>
@@ -261,7 +188,7 @@ const MobileTestimonialCarousel = () => {
     <div>
       <div ref={emblaRef} className="overflow-hidden">
         <div className="flex">
-          {testimonials.map((t, i) => (
+          {testimonials.map((tItem, i) => (
             <div key={i} className="flex-[0_0_100%] min-w-0 px-2">
               <div className="pl-5 border-l border-border py-2">
                 <div className="flex gap-0.5 mb-3">
@@ -269,14 +196,13 @@ const MobileTestimonialCarousel = () => {
                     <Star key={j} className="w-3.5 h-3.5 fill-secondary/60 text-secondary/60" />
                   ))}
                 </div>
-                <p className="font-body text-[15px] text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
-                <p className="font-body text-[11px] font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
+                <p className="font-body text-[15px] text-foreground/80 leading-[1.8] italic mb-4">"{tItem.text}"</p>
+                <p className="font-body text-[11px] font-semibold text-foreground tracking-wider uppercase">— {tItem.author}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
-      {/* Dots */}
       <div className="flex justify-center gap-2 mt-6">
         {testimonials.map((_, i) => (
           <button
@@ -295,6 +221,7 @@ const TestimonialsSection = () => {
   const [page, setPage] = useState(0);
   const perPage = 4;
   const totalPages = Math.ceil(testimonials.length / perPage);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const timer = setInterval(() => setPage((p) => (p + 1) % totalPages), 8000);
@@ -307,11 +234,10 @@ const TestimonialsSection = () => {
     <section className="py-16 md:py-28 lg:py-32 bg-accent/40">
       <div className="container-site max-w-5xl">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
-          <motion.span variants={reveal} custom={0} className="section-label">Client Love</motion.span>
-          <motion.h2 variants={reveal} custom={1} className="section-title">What Our Clients Say</motion.h2>
+          <motion.span variants={reveal} custom={0} className="section-label">{t(translations.testimonials.label)}</motion.span>
+          <motion.h2 variants={reveal} custom={1} className="section-title">{t(translations.testimonials.title)}</motion.h2>
         </motion.div>
 
-        {/* Desktop: 4 at a time with rotation */}
         <div className="hidden md:block">
           <AnimatePresence mode="wait">
             <motion.div
@@ -322,15 +248,15 @@ const TestimonialsSection = () => {
               transition={{ duration: 0.5 }}
               className="grid grid-cols-2 gap-8"
             >
-              {currentTestimonials.map((t) => (
-                <div key={t.author} className="relative pl-5 border-l border-border">
+              {currentTestimonials.map((tItem) => (
+                <div key={tItem.author} className="relative pl-5 border-l border-border">
                   <div className="flex gap-0.5 mb-3">
                     {[...Array(5)].map((_, j) => (
                       <Star key={j} className="w-3 h-3 fill-secondary/60 text-secondary/60" />
                     ))}
                   </div>
-                  <p className="font-body text-[15px] text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
-                  <p className="font-body text-[12px] font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
+                  <p className="font-body text-[15px] text-foreground/80 leading-[1.8] italic mb-4">"{tItem.text}"</p>
+                  <p className="font-body text-[12px] font-semibold text-foreground tracking-wider uppercase">— {tItem.author}</p>
                 </div>
               ))}
             </motion.div>
@@ -346,7 +272,6 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        {/* Mobile carousel */}
         <div className="md:hidden">
           <MobileTestimonialCarousel />
         </div>
@@ -355,9 +280,13 @@ const TestimonialsSection = () => {
   );
 };
 
+/* ── Service categories with translations ── */
+const serviceKeys = ["cut", "perm", "colour", "treatment", "other"] as const;
+
 /* ── Page ── */
 const Index = () => {
   const [expandedService, setExpandedService] = useState<number | null>(0);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const s = document.createElement("script");
@@ -381,13 +310,13 @@ const Index = () => {
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
-              <motion.span variants={reveal} custom={0} className="section-label">About</motion.span>
-              <motion.h2 variants={reveal} custom={1} className="section-title mb-6">Sculpting Stylish Solutions</motion.h2>
+              <motion.span variants={reveal} custom={0} className="section-label">{t(translations.about.label)}</motion.span>
+              <motion.h2 variants={reveal} custom={1} className="section-title mb-6">{t(translations.about.title)}</motion.h2>
               <motion.p variants={reveal} custom={2} className="font-body text-muted-foreground leading-[1.8] mb-4 text-base">
-                Welcome to Initial Hair Salon, where Japanese and Taiwanese expertise combine for exceptional styling. Our stylists merge precision and innovation to create personalized experiences that exceed expectations.
+                {t(translations.about.p1)}
               </motion.p>
               <motion.p variants={reveal} custom={3} className="font-body text-muted-foreground leading-[1.8] text-base">
-                Step in and immerse yourself in our salon's harmonious and relaxing ambience. Every visit is crafted to make you feel your very best.
+                {t(translations.about.p2)}
               </motion.p>
             </motion.div>
             <motion.div
@@ -411,8 +340,8 @@ const Index = () => {
       <section id="stylists" className="py-16 md:py-28 lg:py-32 bg-accent/40">
         <div className="container-site">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
-            <motion.span variants={reveal} custom={0} className="section-label">Our Team</motion.span>
-            <motion.h2 variants={reveal} custom={1} className="section-title">Stylists</motion.h2>
+            <motion.span variants={reveal} custom={0} className="section-label">{t(translations.stylists.label)}</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title">{t(translations.stylists.title)}</motion.h2>
           </motion.div>
 
           <motion.div
@@ -446,58 +375,61 @@ const Index = () => {
       <section id="services" className="py-16 md:py-28 lg:py-32">
         <div className="container-site max-w-2xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
-            <motion.span variants={reveal} custom={0} className="section-label">What We Offer</motion.span>
-            <motion.h2 variants={reveal} custom={1} className="section-title">Services &amp; Pricing</motion.h2>
+            <motion.span variants={reveal} custom={0} className="section-label">{t(translations.services.label)}</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title">{t(translations.services.title)}</motion.h2>
           </motion.div>
 
           {/* Accordion */}
           <div className="divide-y divide-border border-t border-b border-border">
-            {serviceCategories.map((cat, ci) => (
-              <div key={cat.title}>
-                <button
-                  onClick={() => setExpandedService(expandedService === ci ? null : ci)}
-                  className="w-full flex items-center justify-between py-5 text-left group"
-                >
-                  <div>
-                    <span className="font-heading text-[17px] font-bold text-foreground">{cat.title}</span>
-                    {cat.note && <span className="block font-body text-[12px] text-muted-foreground mt-0.5">{cat.note}</span>}
-                  </div>
-                  <ChevronDown className={`w-4 h-4 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${expandedService === ci ? "rotate-180" : ""}`} />
-                </button>
-                {expandedService === ci && (
-                  <div className="pb-5">
-                    {cat.items.map((item) => (
-                      <div key={item.name} className="flex items-baseline justify-between py-2.5">
-                        <span className="font-body text-[15px] text-foreground">{item.name}</span>
-                        <span className="font-body text-[15px] text-muted-foreground tabular-nums">{item.price}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+            {serviceKeys.map((key, ci) => {
+              const cat = translations.services.categories[key];
+              return (
+                <div key={key}>
+                  <button
+                    onClick={() => setExpandedService(expandedService === ci ? null : ci)}
+                    className="w-full flex items-center justify-between py-5 text-left group"
+                  >
+                    <div>
+                      <span className="font-heading text-[17px] font-bold text-foreground">{t(cat.title)}</span>
+                      {t(cat.note) && <span className="block font-body text-[12px] text-muted-foreground mt-0.5">{t(cat.note)}</span>}
+                    </div>
+                    <ChevronDown className={`w-4 h-4 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${expandedService === ci ? "rotate-180" : ""}`} />
+                  </button>
+                  {expandedService === ci && (
+                    <div className="pb-5">
+                      {cat.items.map((item) => (
+                        <div key={item.price} className="flex items-baseline justify-between py-2.5">
+                          <span className="font-body text-[15px] text-foreground">{t(item.name)}</span>
+                          <span className="font-body text-[15px] text-muted-foreground tabular-nums">{item.price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           <p className="font-body text-[12px] text-muted-foreground text-center mt-6 tracking-wide">
-            Prices may vary depending on hair length, thickness, and stylist.
+            {t(translations.services.priceNote)}
           </p>
 
           <div className="text-center mt-8 mb-12">
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Book Appointment
+              {t(translations.nav.bookAppointment)}
             </a>
           </div>
 
           {/* ── Policy Block ── */}
           <div className="border-t border-border pt-8">
-            <h3 className="font-heading text-[15px] font-bold text-foreground mb-4 tracking-wide">Cancellation &amp; Reschedule Policy</h3>
+            <h3 className="font-heading text-[15px] font-bold text-foreground mb-4 tracking-wide">{t(translations.policy.title)}</h3>
             <div className="space-y-3 font-body text-[13px] md:text-[14px] text-muted-foreground leading-[1.9]">
-              <p>Cancellations or reschedules must be made at least <strong className="text-foreground">48 hours</strong> prior to the appointment.</p>
-              <p>Failure to do so will result in a penalty charge of <strong className="text-foreground">30%</strong> of the booked service.</p>
-              <p>Late arrivals exceeding <strong className="text-foreground">15 minutes</strong> may require rescheduling and will be considered a policy violation.</p>
-              <p>For any changes, cancellations, or queries, please contact us via DM on Instagram or by phone.</p>
-              <p>Your credit card information is securely stored and will only be used in the event of no-shows or violations of our cancellation policy.</p>
-              <p className="pt-1 italic">Thank you for your understanding and cooperation.</p>
+              <p dangerouslySetInnerHTML={{ __html: t(translations.policy.p1) }} />
+              <p dangerouslySetInnerHTML={{ __html: t(translations.policy.p2) }} />
+              <p dangerouslySetInnerHTML={{ __html: t(translations.policy.p3) }} />
+              <p>{t(translations.policy.p4)}</p>
+              <p>{t(translations.policy.p5)}</p>
+              <p className="pt-1 italic">{t(translations.policy.p6)}</p>
             </div>
           </div>
         </div>
@@ -507,8 +439,8 @@ const Index = () => {
       <section id="portfolio" className="py-16 md:py-28 lg:py-32 bg-accent/40">
         <div className="container-site">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
-            <motion.span variants={reveal} custom={0} className="section-label">Our Work</motion.span>
-            <motion.h2 variants={reveal} custom={1} className="section-title">Portfolio</motion.h2>
+            <motion.span variants={reveal} custom={0} className="section-label">{t(translations.portfolio.label)}</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title">{t(translations.portfolio.title)}</motion.h2>
           </motion.div>
           {/* @ts-ignore */}
           <behold-widget feed-id="9Cg03AgPL9WyaEb5o8tX"></behold-widget>
@@ -524,36 +456,36 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
             {/* Left — info */}
             <div>
-              <span className="section-label">Visit Us</span>
-              <h2 className="section-title mb-8">Get In Touch</h2>
+              <span className="section-label">{t(translations.contact.label)}</span>
+              <h2 className="section-title mb-8">{t(translations.contact.title)}</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <Phone className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
                   <div>
-                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Phone</p>
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">{t(translations.contact.phone)}</p>
                     <a href="tel:604-715-7888" className="font-body text-[15px] text-foreground hover:text-secondary transition-colors">604-715-7888</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <MapPin className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
                   <div>
-                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Address</p>
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">{t(translations.contact.address)}</p>
                     <p className="font-body text-[15px] text-foreground">#151 - 6386 No. 3 Rd., Richmond, BC</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Clock className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
                   <div>
-                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Hours</p>
-                    <p className="font-body text-[15px] text-foreground">Monday – Sunday: 11:00 am – 7:00 pm</p>
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">{t(translations.contact.hours)}</p>
+                    <p className="font-body text-[15px] text-foreground">{t(translations.contact.hoursValue)}</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-10">
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                  Book Appointment
+                  {t(translations.nav.bookAppointment)}
                 </a>
               </div>
             </div>
@@ -576,10 +508,10 @@ const Index = () => {
       <section id="join-team" className="py-16 md:py-28 lg:py-32 bg-accent/40">
         <div className="container-site max-w-2xl text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
-            <motion.span variants={reveal} custom={0} className="section-label">Careers</motion.span>
-            <motion.h2 variants={reveal} custom={1} className="section-title mb-6">Join Our Team</motion.h2>
+            <motion.span variants={reveal} custom={0} className="section-label">{t(translations.joinTeam.label)}</motion.span>
+            <motion.h2 variants={reveal} custom={1} className="section-title mb-6">{t(translations.joinTeam.title)}</motion.h2>
             <motion.p variants={reveal} custom={2} className="font-body text-[15px] md:text-base text-muted-foreground leading-[1.9] mb-10 max-w-xl mx-auto">
-              Are you a passionate and talented hair stylist looking to advance your career? At Initial Salon, we are always on the lookout for creative professionals to join our dynamic team. Our salon offers a vibrant environment where you can showcase your skills, learn from experienced stylists, and grow with us. If you have a keen eye for detail, a dedication to customer satisfaction, and a love for the art of hairdressing, we want to hear from you! Fill out the form below to apply and take the first step toward an exciting new chapter in your career.
+              {t(translations.joinTeam.description)}
             </motion.p>
           </motion.div>
 
@@ -589,19 +521,19 @@ const Index = () => {
             className="text-left space-y-5 max-w-md mx-auto"
           >
             <div>
-              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Name</label>
-              <input type="text" className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your name" />
+              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">{t(translations.joinTeam.nameLabel)}</label>
+              <input type="text" className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder={t(translations.joinTeam.namePlaceholder)} />
             </div>
             <div>
-              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Email</label>
-              <input type="email" className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your email" />
+              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">{t(translations.joinTeam.emailLabel)}</label>
+              <input type="email" className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder={t(translations.joinTeam.emailPlaceholder)} />
             </div>
             <div>
-              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Message</label>
-              <textarea rows={4} className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder="Tell us about yourself..." />
+              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">{t(translations.joinTeam.messageLabel)}</label>
+              <textarea rows={4} className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder={t(translations.joinTeam.messagePlaceholder)} />
             </div>
             <button type="submit" className="btn-primary w-full gap-2 justify-center py-4">
-              <Send className="w-3.5 h-3.5" /> Send Application
+              <Send className="w-3.5 h-3.5" /> {t(translations.joinTeam.submit)}
             </button>
           </form>
         </div>
