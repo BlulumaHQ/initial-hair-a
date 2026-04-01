@@ -57,13 +57,13 @@ const Header = () => {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-              className="font-body text-[10px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
+              className="font-body text-[11px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
             >
               {link.label}
             </a>
@@ -72,7 +72,7 @@ const Header = () => {
             href={SHOP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-body text-[10px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
+            className="font-body text-[11px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
           >
             SHOP
           </a>
