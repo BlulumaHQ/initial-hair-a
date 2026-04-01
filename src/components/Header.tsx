@@ -1,21 +1,25 @@
 import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { translations } from "@/i18n/translations";
 
 const BOOKING_URL =
   "https://www.fresha.com/a/initial-salon-richmond-6386-no-3-road-kr9spcrw/all-offer?menu=true&rwg_token=AJKvS9UQy7d34XWVYz7Y2UcNMMI0llYMKBzKtJ-ix_hcoOULUtHkYyx4zXbut-9xmCflwhAa8Da7oKG28yDyZbEloWPcwryVjw%3D%3D&gei=7VnqZrP2Aorx0PEPoLbVsQ8";
 const SHOP_URL = "https://www.fresha.com/store/initial-salon-store-ariubv76";
 
-const navLinks = [
-  { label: "HOME", href: "#home" },
-  { label: "STYLISTS", href: "#stylists" },
-  { label: "SERVICES", href: "#services" },
-  { label: "PORTFOLIO", href: "#portfolio" },
-  { label: "JOIN OUR TEAM", href: "#join-team" },
-];
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { label: t(translations.nav.home), href: "#home" },
+    { label: t(translations.nav.stylists), href: "#stylists" },
+    { label: t(translations.nav.services), href: "#services" },
+    { label: t(translations.nav.portfolio), href: "#portfolio" },
+    { label: t(translations.nav.joinTeam), href: "#join-team" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -74,28 +78,34 @@ const Header = () => {
             rel="noopener noreferrer"
             className="font-body text-[11px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
           >
-            SHOP
+            {t(translations.nav.shop)}
           </a>
         </nav>
 
-        {/* Desktop CTA */}
-        <a
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden lg:inline-flex btn-primary text-[12px] py-2.5 px-6"
-        >
-          Book Appointment
-        </a>
+        {/* Desktop: Language + CTA */}
+        <div className="hidden lg:flex items-center gap-5">
+          <LanguageSwitcher />
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary text-[12px] py-2.5 px-6"
+          >
+            {t(translations.nav.bookAppointment)}
+          </a>
+        </div>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 -mr-2 text-foreground"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        {/* Mobile: Language + Toggle */}
+        <div className="lg:hidden flex items-center gap-3">
+          <LanguageSwitcher />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 -mr-2 text-foreground"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -118,7 +128,7 @@ const Header = () => {
               rel="noopener noreferrer"
               className="font-body text-[15px] tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
             >
-              SHOP ↗
+              {t(translations.nav.shop)} ↗
             </a>
             <a
               href={BOOKING_URL}
@@ -126,7 +136,7 @@ const Header = () => {
               rel="noopener noreferrer"
               className="btn-primary text-center mt-6"
             >
-              Book Appointment
+              {t(translations.nav.bookAppointment)}
             </a>
           </nav>
         </div>
