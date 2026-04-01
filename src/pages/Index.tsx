@@ -23,7 +23,7 @@ const stylists = [
   { name: "DONNA", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-42.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
   { name: "STELLA", title: "G.M", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-20.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
   { name: "Hiro", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/09/initial-hair-hero-6.jpg", instagram: "https://www.instagram.com/hiro_masa.hair" },
-  { name: "Kuro", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2025/03/%E6%9C%AA%E5%91%BD%E5%90%8D%E8%A8%AD%E8%A8%88-5.jpg", instagram: "https://www.instagram.com/kuro0084" },
+  
   { name: "Meg", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2026/01/initial-hair-pic-1888.png", instagram: "https://www.instagram.com/iki_meguo" },
 ];
 
