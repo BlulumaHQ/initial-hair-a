@@ -42,7 +42,7 @@ const Header = () => {
         scrolled ? "bg-background/95 backdrop-blur-md shadow-[0_1px_0_hsl(var(--border))]" : "bg-background"
       }`}
     >
-      <div className="container-site flex items-center justify-between h-[68px]">
+      <div className="container-site flex items-center justify-between h-[80px]">
         {/* Logo */}
         <a
           href="#home"
@@ -52,7 +52,7 @@ const Header = () => {
           <img
             src="https://initialsalon.com/wp-content/uploads/2024/06/initial-Hair-salon-logo.png"
             alt="Initial Salon"
-            className="h-[48px] md:h-[56px] w-auto"
+            className="h-[54px] md:h-[64px] w-auto"
           />
         </a>
 
