@@ -185,16 +185,16 @@ const HeroSlider = () => {
             <div className="h-[11.5rem] sm:h-[12.5rem] md:h-[14.5rem] lg:h-[15.5rem] mb-8 flex flex-col justify-end">
               {slide.content && (
                 <>
-                  <p className="font-body text-[10px] tracking-[0.3em] uppercase text-background/60 mb-4">
+                  <p className="font-body text-[11px] tracking-[0.3em] uppercase text-background/60 mb-4">
                     {slide.content.subtitle}
                   </p>
                   <h1
                     className="font-heading text-background leading-[1.05] tracking-tight mb-5"
-                    style={{ fontSize: "clamp(2.25rem, 4.5vw + 0.5rem, 3.75rem)" }}
+                    style={{ fontSize: "clamp(2.5rem, 4.5vw + 0.5rem, 4.25rem)" }}
                   >
                     {slide.content.title}
                   </h1>
-                  <p className="font-body text-sm md:text-base text-background/75 leading-relaxed max-w-sm">
+                  <p className="font-body text-[15px] md:text-base text-background/75 leading-relaxed max-w-sm">
                     {slide.content.description}
                   </p>
                 </>
@@ -269,8 +269,8 @@ const MobileTestimonialCarousel = () => {
                     <Star key={j} className="w-3.5 h-3.5 fill-secondary/60 text-secondary/60" />
                   ))}
                 </div>
-                <p className="font-body text-sm text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
-                <p className="font-body text-xs font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
+                <p className="font-body text-[15px] text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
+                <p className="font-body text-[11px] font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
               </div>
             </div>
           ))}
@@ -329,8 +329,8 @@ const TestimonialsSection = () => {
                       <Star key={j} className="w-3 h-3 fill-secondary/60 text-secondary/60" />
                     ))}
                   </div>
-                  <p className="font-body text-sm text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
-                  <p className="font-body text-[11px] font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
+                  <p className="font-body text-[15px] text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
+                  <p className="font-body text-[12px] font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
                 </div>
               ))}
             </motion.div>
@@ -383,10 +383,10 @@ const Index = () => {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
               <motion.span variants={reveal} custom={0} className="section-label">About</motion.span>
               <motion.h2 variants={reveal} custom={1} className="section-title mb-6">Sculpting Stylish Solutions</motion.h2>
-              <motion.p variants={reveal} custom={2} className="font-body text-muted-foreground leading-[1.8] mb-4 text-[15px]">
+              <motion.p variants={reveal} custom={2} className="font-body text-muted-foreground leading-[1.8] mb-4 text-base">
                 Welcome to Initial Hair Salon, where Japanese and Taiwanese expertise combine for exceptional styling. Our stylists merge precision and innovation to create personalized experiences that exceed expectations.
               </motion.p>
-              <motion.p variants={reveal} custom={3} className="font-body text-muted-foreground leading-[1.8] text-[15px]">
+              <motion.p variants={reveal} custom={3} className="font-body text-muted-foreground leading-[1.8] text-base">
                 Step in and immerse yourself in our salon's harmonious and relaxing ambience. Every visit is crafted to make you feel your very best.
               </motion.p>
             </motion.div>
@@ -430,12 +430,12 @@ const Index = () => {
                   />
                 </div>
                 <div className="flex items-center justify-center gap-1.5">
-                  <h3 className="font-heading text-xs md:text-sm font-bold text-foreground tracking-wide">{s.name}</h3>
+                  <h3 className="font-heading text-sm md:text-[15px] font-bold text-foreground tracking-wide">{s.name}</h3>
                   <a href={s.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} Instagram`} className="text-muted-foreground hover:text-foreground transition-colors">
                     <Instagram className="w-3.5 h-3.5" />
                   </a>
                 </div>
-                {s.title && <p className="font-body text-[10px] md:text-[11px] text-muted-foreground mt-0.5 tracking-wider uppercase">{s.title}</p>}
+                {s.title && <p className="font-body text-[11px] md:text-[12px] text-muted-foreground mt-0.5 tracking-wider uppercase">{s.title}</p>}
               </motion.div>
             ))}
           </motion.div>
@@ -459,8 +459,8 @@ const Index = () => {
                   className="w-full flex items-center justify-between py-5 text-left group"
                 >
                   <div>
-                    <span className="font-heading text-base font-bold text-foreground">{cat.title}</span>
-                    {cat.note && <span className="block font-body text-[11px] text-muted-foreground mt-0.5">{cat.note}</span>}
+                    <span className="font-heading text-[17px] font-bold text-foreground">{cat.title}</span>
+                    {cat.note && <span className="block font-body text-[12px] text-muted-foreground mt-0.5">{cat.note}</span>}
                   </div>
                   <ChevronDown className={`w-4 h-4 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${expandedService === ci ? "rotate-180" : ""}`} />
                 </button>
@@ -468,8 +468,8 @@ const Index = () => {
                   <div className="pb-5">
                     {cat.items.map((item) => (
                       <div key={item.name} className="flex items-baseline justify-between py-2.5">
-                        <span className="font-body text-sm text-foreground">{item.name}</span>
-                        <span className="font-body text-sm text-muted-foreground tabular-nums">{item.price}</span>
+                        <span className="font-body text-[15px] text-foreground">{item.name}</span>
+                        <span className="font-body text-[15px] text-muted-foreground tabular-nums">{item.price}</span>
                       </div>
                     ))}
                   </div>
@@ -478,7 +478,7 @@ const Index = () => {
             ))}
           </div>
 
-          <p className="font-body text-[11px] text-muted-foreground text-center mt-6 tracking-wide">
+          <p className="font-body text-[12px] text-muted-foreground text-center mt-6 tracking-wide">
             Prices may vary depending on hair length, thickness, and stylist.
           </p>
 
@@ -490,8 +490,8 @@ const Index = () => {
 
           {/* ── Policy Block ── */}
           <div className="border-t border-border pt-8">
-            <h3 className="font-heading text-sm font-bold text-foreground mb-4 tracking-wide">Cancellation &amp; Reschedule Policy</h3>
-            <div className="space-y-3 font-body text-xs md:text-[13px] text-muted-foreground leading-[1.9]">
+            <h3 className="font-heading text-[15px] font-bold text-foreground mb-4 tracking-wide">Cancellation &amp; Reschedule Policy</h3>
+            <div className="space-y-3 font-body text-[13px] md:text-[14px] text-muted-foreground leading-[1.9]">
               <p>Cancellations or reschedules must be made at least <strong className="text-foreground">48 hours</strong> prior to the appointment.</p>
               <p>Failure to do so will result in a penalty charge of <strong className="text-foreground">30%</strong> of the booked service.</p>
               <p>Late arrivals exceeding <strong className="text-foreground">15 minutes</strong> may require rescheduling and will be considered a policy violation.</p>
@@ -531,22 +531,22 @@ const Index = () => {
                 <div className="flex items-start gap-4">
                   <Phone className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
                   <div>
-                    <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Phone</p>
-                    <a href="tel:604-715-7888" className="font-body text-sm text-foreground hover:text-secondary transition-colors">604-715-7888</a>
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Phone</p>
+                    <a href="tel:604-715-7888" className="font-body text-[15px] text-foreground hover:text-secondary transition-colors">604-715-7888</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <MapPin className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
                   <div>
-                    <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Address</p>
-                    <p className="font-body text-sm text-foreground">#151 - 6386 No. 3 Rd., Richmond, BC</p>
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Address</p>
+                    <p className="font-body text-[15px] text-foreground">#151 - 6386 No. 3 Rd., Richmond, BC</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Clock className="w-4 h-4 mt-1 text-muted-foreground flex-shrink-0" />
                   <div>
-                    <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Hours</p>
-                    <p className="font-body text-sm text-foreground">Monday – Sunday: 11:00 am – 7:00 pm</p>
+                    <p className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Hours</p>
+                    <p className="font-body text-[15px] text-foreground">Monday – Sunday: 11:00 am – 7:00 pm</p>
                   </div>
                 </div>
               </div>
@@ -578,7 +578,7 @@ const Index = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
             <motion.span variants={reveal} custom={0} className="section-label">Careers</motion.span>
             <motion.h2 variants={reveal} custom={1} className="section-title mb-6">Join Our Team</motion.h2>
-            <motion.p variants={reveal} custom={2} className="font-body text-sm md:text-[15px] text-muted-foreground leading-[1.9] mb-10 max-w-xl mx-auto">
+            <motion.p variants={reveal} custom={2} className="font-body text-[15px] md:text-base text-muted-foreground leading-[1.9] mb-10 max-w-xl mx-auto">
               Are you a passionate and talented hair stylist looking to advance your career? At Initial Salon, we are always on the lookout for creative professionals to join our dynamic team. Our salon offers a vibrant environment where you can showcase your skills, learn from experienced stylists, and grow with us. If you have a keen eye for detail, a dedication to customer satisfaction, and a love for the art of hairdressing, we want to hear from you! Fill out the form below to apply and take the first step toward an exciting new chapter in your career.
             </motion.p>
           </motion.div>
@@ -589,16 +589,16 @@ const Index = () => {
             className="text-left space-y-5 max-w-md mx-auto"
           >
             <div>
-              <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Name</label>
-              <input type="text" className="w-full border border-border bg-background px-4 py-3.5 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your name" />
+              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Name</label>
+              <input type="text" className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your name" />
             </div>
             <div>
-              <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Email</label>
-              <input type="email" className="w-full border border-border bg-background px-4 py-3.5 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your email" />
+              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Email</label>
+              <input type="email" className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder="Your email" />
             </div>
             <div>
-              <label className="font-body text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Message</label>
-              <textarea rows={4} className="w-full border border-border bg-background px-4 py-3.5 font-body text-sm text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder="Tell us about yourself..." />
+              <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">Message</label>
+              <textarea rows={4} className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder="Tell us about yourself..." />
             </div>
             <button type="submit" className="btn-primary w-full gap-2 justify-center py-4">
               <Send className="w-3.5 h-3.5" /> Send Application

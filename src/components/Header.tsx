@@ -42,7 +42,7 @@ const Header = () => {
         scrolled ? "bg-background/95 backdrop-blur-md shadow-[0_1px_0_hsl(var(--border))]" : "bg-background"
       }`}
     >
-      <div className="container-site flex items-center justify-between h-[68px]">
+      <div className="container-site flex items-center justify-between h-[80px]">
         {/* Logo */}
         <a
           href="#home"
@@ -52,18 +52,18 @@ const Header = () => {
           <img
             src="https://initialsalon.com/wp-content/uploads/2024/06/initial-Hair-salon-logo.png"
             alt="Initial Salon"
-            className="h-[48px] md:h-[56px] w-auto"
+            className="h-[54px] md:h-[64px] w-auto"
           />
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-              className="font-body text-[10px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
+              className="font-body text-[11px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
             >
               {link.label}
             </a>
@@ -72,7 +72,7 @@ const Header = () => {
             href={SHOP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-body text-[10px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
+            className="font-body text-[11px] tracking-[0.16em] font-medium text-foreground/55 hover:text-foreground transition-colors"
           >
             SHOP
           </a>
@@ -83,7 +83,7 @@ const Header = () => {
           href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:inline-flex btn-primary text-[11px] py-2 px-5"
+          className="hidden lg:inline-flex btn-primary text-[12px] py-2.5 px-6"
         >
           Book Appointment
         </a>
@@ -100,14 +100,14 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-[68px] bg-background z-40">
+        <div className="lg:hidden fixed inset-0 top-[80px] bg-background z-40">
           <nav className="container-site py-8 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className="font-body text-sm tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
+                className="font-body text-[15px] tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
               >
                 {link.label}
               </a>
@@ -116,7 +116,7 @@ const Header = () => {
               href={SHOP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body text-sm tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
+              className="font-body text-[15px] tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
             >
               SHOP ↗
             </a>
