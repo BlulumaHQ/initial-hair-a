@@ -62,19 +62,19 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="font-body text-[10px] font-semibold tracking-[0.14em] uppercase text-foreground mb-5">Contact</h4>
+            <h4 className="font-body text-[11px] font-semibold tracking-[0.14em] uppercase text-foreground mb-5">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone className="w-3.5 h-3.5 mt-0.5 text-muted-foreground flex-shrink-0" />
-                <a href="tel:604-715-7888" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">604-715-7888</a>
+                <a href="tel:604-715-7888" className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors">604-715-7888</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-3.5 h-3.5 mt-0.5 text-muted-foreground flex-shrink-0" />
-                <span className="font-body text-sm text-muted-foreground">#151 - 6386 No. 3 Rd.<br />Richmond, BC</span>
+                <span className="font-body text-[15px] text-muted-foreground">#151 - 6386 No. 3 Rd.<br />Richmond, BC</span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="w-3.5 h-3.5 mt-0.5 text-muted-foreground flex-shrink-0" />
-                <div className="font-body text-sm text-muted-foreground">
+                <div className="font-body text-[15px] text-muted-foreground">
                   <p>Mon – Sun: 11 am – 7 pm</p>
                 </div>
               </li>
