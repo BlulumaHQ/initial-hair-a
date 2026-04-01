@@ -117,21 +117,21 @@ const heroSlides = [
     content: null, // buttons only — logo image
   },
   {
-    image: heroSlide2,
-    imagePositionClassName: "object-center",
-    content: {
-      subtitle: "Japanese & Taiwanese Expertise · Richmond, BC",
-      title: "Bring Out the Best in Your Hair",
-      description: "Precision meets artistry. Experience personalized styling in a harmonious, relaxing ambience.",
-    },
-  },
-  {
     image: heroSlide3,
     imagePositionClassName: "object-center",
     content: {
       subtitle: "Premium Hair Care · Personalized Service",
       title: "Where Style Meets Sophistication",
       description: "Our skilled stylists merge precision and innovation to create looks that exceed expectations.",
+    },
+  },
+  {
+    image: heroSlide2,
+    imagePositionClassName: "object-center",
+    content: {
+      subtitle: "Japanese & Taiwanese Expertise · Richmond, BC",
+      title: "Bring Out the Best in Your Hair",
+      description: "Precision meets artistry. Experience personalized styling in a harmonious, relaxing ambience.",
     },
   },
 ];
@@ -287,6 +287,71 @@ const MobileTestimonialCarousel = () => {
         ))}
       </div>
     </div>
+  );
+};
+
+/* ── Desktop Testimonial Rotation (4 at a time) ── */
+const TestimonialsSection = () => {
+  const [page, setPage] = useState(0);
+  const perPage = 4;
+  const totalPages = Math.ceil(testimonials.length / perPage);
+
+  useEffect(() => {
+    const timer = setInterval(() => setPage((p) => (p + 1) % totalPages), 8000);
+    return () => clearInterval(timer);
+  }, [totalPages]);
+
+  const currentTestimonials = testimonials.slice(page * perPage, page * perPage + perPage);
+
+  return (
+    <section className="py-16 md:py-28 lg:py-32 bg-accent/40">
+      <div className="container-site max-w-5xl">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
+          <motion.span variants={reveal} custom={0} className="section-label">Client Love</motion.span>
+          <motion.h2 variants={reveal} custom={1} className="section-title">What Our Clients Say</motion.h2>
+        </motion.div>
+
+        {/* Desktop: 4 at a time with rotation */}
+        <div className="hidden md:block">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={page}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.5 }}
+              className="grid grid-cols-2 gap-8"
+            >
+              {currentTestimonials.map((t) => (
+                <div key={t.author} className="relative pl-5 border-l border-border">
+                  <div className="flex gap-0.5 mb-3">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="w-3 h-3 fill-secondary/60 text-secondary/60" />
+                    ))}
+                  </div>
+                  <p className="font-body text-sm text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
+                  <p className="font-body text-[11px] font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+          <div className="flex justify-center gap-2 mt-8">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPage(i)}
+                className={`w-2 h-2 rounded-full transition-colors ${i === page ? "bg-foreground" : "bg-border"}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile carousel */}
+        <div className="md:hidden">
+          <MobileTestimonialCarousel />
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -451,34 +516,7 @@ const Index = () => {
       </section>
 
       {/* ═══════ TESTIMONIALS ═══════ */}
-      <section className="py-16 md:py-28 lg:py-32 bg-accent/40">
-        <div className="container-site max-w-4xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
-            <motion.span variants={reveal} custom={0} className="section-label">Client Love</motion.span>
-            <motion.h2 variants={reveal} custom={1} className="section-title">What Our Clients Say</motion.h2>
-          </motion.div>
-
-          {/* Desktop grid */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="hidden md:grid grid-cols-2 gap-8">
-            {testimonials.map((t, i) => (
-              <motion.div key={t.author} variants={reveal} custom={i} className="relative pl-5 border-l border-border">
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-3 h-3 fill-secondary/60 text-secondary/60" />
-                  ))}
-                </div>
-                <p className="font-body text-sm text-foreground/80 leading-[1.8] italic mb-4">"{t.text}"</p>
-                <p className="font-body text-[11px] font-semibold text-foreground tracking-wider uppercase">— {t.author}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Mobile carousel */}
-          <div className="md:hidden">
-            <MobileTestimonialCarousel />
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* ═══════ CONTACT + INFO ═══════ */}
       <section className="py-16 md:py-28 lg:py-32">
