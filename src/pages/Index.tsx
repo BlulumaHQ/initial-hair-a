@@ -578,7 +578,7 @@ const Index = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
             <motion.span variants={reveal} custom={0} className="section-label">Careers</motion.span>
             <motion.h2 variants={reveal} custom={1} className="section-title mb-6">Join Our Team</motion.h2>
-            <motion.p variants={reveal} custom={2} className="font-body text-sm md:text-[15px] text-muted-foreground leading-[1.9] mb-10 max-w-xl mx-auto">
+            <motion.p variants={reveal} custom={2} className="font-body text-[15px] md:text-base text-muted-foreground leading-[1.9] mb-10 max-w-xl mx-auto">
               Are you a passionate and talented hair stylist looking to advance your career? At Initial Salon, we are always on the lookout for creative professionals to join our dynamic team. Our salon offers a vibrant environment where you can showcase your skills, learn from experienced stylists, and grow with us. If you have a keen eye for detail, a dedication to customer satisfaction, and a love for the art of hairdressing, we want to hear from you! Fill out the form below to apply and take the first step toward an exciting new chapter in your career.
             </motion.p>
           </motion.div>
