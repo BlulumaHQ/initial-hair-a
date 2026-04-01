@@ -107,7 +107,7 @@ const Header = () => {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className="font-body text-sm tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
+                className="font-body text-[15px] tracking-[0.1em] font-medium text-foreground py-4 border-b border-border/50"
               >
                 {link.label}
               </a>
