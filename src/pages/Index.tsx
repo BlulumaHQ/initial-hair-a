@@ -490,8 +490,8 @@ const Index = () => {
 
           {/* ── Policy Block ── */}
           <div className="border-t border-border pt-8">
-            <h3 className="font-heading text-sm font-bold text-foreground mb-4 tracking-wide">Cancellation &amp; Reschedule Policy</h3>
-            <div className="space-y-3 font-body text-xs md:text-[13px] text-muted-foreground leading-[1.9]">
+            <h3 className="font-heading text-[15px] font-bold text-foreground mb-4 tracking-wide">Cancellation &amp; Reschedule Policy</h3>
+            <div className="space-y-3 font-body text-[13px] md:text-[14px] text-muted-foreground leading-[1.9]">
               <p>Cancellations or reschedules must be made at least <strong className="text-foreground">48 hours</strong> prior to the appointment.</p>
               <p>Failure to do so will result in a penalty charge of <strong className="text-foreground">30%</strong> of the booked service.</p>
               <p>Late arrivals exceeding <strong className="text-foreground">15 minutes</strong> may require rescheduling and will be considered a policy violation.</p>
