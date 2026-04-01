@@ -23,7 +23,7 @@ const stylists = [
   { name: "DONNA", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-42.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
   { name: "STELLA", title: "G.M", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-20.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
   { name: "Hiro", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/09/initial-hair-hero-6.jpg", instagram: "https://www.instagram.com/hiro_masa.hair" },
-  { name: "Kuro", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2025/03/%E6%9C%AA%E5%91%BD%E5%90%8D%E8%A8%AD%E8%A8%88-5.jpg", instagram: "https://www.instagram.com/kuro0084" },
+  
   { name: "Meg", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2026/01/initial-hair-pic-1888.png", instagram: "https://www.instagram.com/iki_meguo" },
 ];
 
@@ -360,39 +360,6 @@ const Index = () => {
           </motion.div>
           {/* @ts-ignore */}
           <behold-widget feed-id="9Cg03AgPL9WyaEb5o8tX"></behold-widget>
-        </div>
-      </section>
-
-      {/* ═══════ NEWS / PROMOTION ═══════ */}
-      <section className="py-16 md:py-28 lg:py-32">
-        <div className="container-site max-w-3xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="text-center mb-12 md:mb-16">
-            <motion.span variants={reveal} custom={0} className="section-label">News</motion.span>
-            <motion.h2 variants={reveal} custom={1} className="section-title">お知らせ</motion.h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.55 }}
-            className="border border-border bg-accent/30 p-8 md:p-12"
-          >
-            <h3 className="font-heading text-lg md:text-xl font-bold text-foreground leading-snug mb-6">
-              新規スタイリストによる割引キャンペーン：パーマ・カラーリングが15%オフ
-            </h3>
-            <p className="font-body text-sm md:text-[15px] text-muted-foreground leading-[2] mb-8">
-              initial ヘアサロンは、ネイティブ日本語話者向けのミートアップを開催しているミングルとコラボレーションを行っており、ミングルに参加された方々には、initial ヘアサロンで利用できるお得なクーポンをお渡ししています。ぜひご参加ください。
-            </p>
-            <a
-              href="https://www.instagram.com/vancouver_mingle/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline text-center inline-flex"
-            >
-              Let's Mingle →
-            </a>
-          </motion.div>
         </div>
       </section>
 
