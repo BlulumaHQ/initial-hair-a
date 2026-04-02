@@ -18,7 +18,6 @@ const Header = () => {
     { label: t(translations.nav.stylists), href: "#stylists" },
     { label: t(translations.nav.services), href: "#services" },
     { label: t(translations.nav.portfolio), href: "#portfolio" },
-    { label: t(translations.nav.joinTeam), href: "#join-team" },
   ];
 
   useEffect(() => {
