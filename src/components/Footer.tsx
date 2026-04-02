@@ -34,9 +34,15 @@ const Footer = () => {
             <a href="#home" onClick={(e) => handleAnchor(e, "#home")} className="inline-block mb-4">
               <span className="font-heading text-xl font-bold text-foreground">Initial Salon</span>
             </a>
-            <p className="font-body text-[15px] text-muted-foreground leading-relaxed">
+            <p className="font-body text-[15px] text-muted-foreground leading-relaxed mb-4">
               {t(translations.footer.tagline)}
             </p>
+            <div className="flex items-center gap-3">
+              <a href="https://www.facebook.com/people/initial_hair_salon/100089371435734/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors"><Facebook className="w-4 h-4" /></a>
+              <a href="https://www.instagram.com/initial_hair_salon/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors"><Instagram className="w-4 h-4" /></a>
+              <a href="https://www.tiktok.com/@salon.initial" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.73a8.19 8.19 0 004.76 1.52v-3.4a4.85 4.85 0 01-1-.16z"/></svg></a>
+              <a href="https://www.threads.com/@Initial_hair_salon" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017C1.5 8.415 2.35 5.56 3.995 3.51 5.845 1.205 8.598.024 12.179 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.506 5.467l-2.85.795c-.964-3.478-3.323-5.345-6.49-5.362h-.009c-2.745.019-4.823.947-6.175 2.761C5.73 7.417 5.02 9.578 5 11.993v.014c.02 2.415.73 4.576 2.001 6.234 1.352 1.814 3.43 2.742 6.175 2.76h.009c2.312-.016 4.083-.693 5.265-2.012 1.037-1.157 1.6-2.728 1.672-4.667a7.7 7.7 0 00-2.005-.506 4.618 4.618 0 01-1.456 2.91c-.867.784-2.07 1.2-3.476 1.206h-.008c-1.79-.008-3.163-.658-4.08-1.93-.778-1.08-1.192-2.513-1.2-4.15v-.065c.008-1.637.422-3.07 1.2-4.15.917-1.272 2.29-1.922 4.08-1.93h.008c1.799.008 3.197.666 4.158 1.96.456.613.79 1.34 1 2.16a10.2 10.2 0 012.87.73c-.028-.584-.114-1.153-.26-1.706-.674-2.555-2.24-4.423-4.661-5.558a9.56 9.56 0 00-3.107-.776z"/></svg></a>
+            </div>
           </div>
           <div className="hidden lg:block" />
           <div>
