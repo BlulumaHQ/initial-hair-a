@@ -141,6 +141,7 @@ const Footer = () => {
               <div className="mt-4 space-y-1.5">
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[13px] text-muted-foreground hover:text-foreground transition-colors block">{t(translations.nav.bookAppointment)} →</a>
                 <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[13px] text-muted-foreground hover:text-foreground transition-colors block">{t(translations.footer.shopProducts)} →</a>
+                <a href="#join-team" onClick={(e) => handleAnchor(e, "#join-team")} className="font-body text-[13px] text-muted-foreground hover:text-foreground transition-colors block">{t(translations.footer.joinOurTeam)} →</a>
               </div>
             </div>
           </div>
