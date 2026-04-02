@@ -208,12 +208,12 @@ export const translations = {
 
   // ── Join Team ──
   joinTeam: {
-    label: { en: "Careers", zh: "招募", ja: "採用情報" },
+    label: { en: "For the Next Wave of Stylists", zh: "給下一世代的造型師", ja: "これからのスタイリストへ" },
     title: { en: "Join Our Team", zh: "加入我們", ja: "チームに参加" },
     description: {
-      en: "Are you a passionate and talented hair stylist looking to advance your career? At Initial Salon, we are always on the lookout for creative professionals to join our dynamic team. Our salon offers a vibrant environment where you can showcase your skills, learn from experienced stylists, and grow with us. If you have a keen eye for detail, a dedication to customer satisfaction, and a love for the art of hairdressing, we want to hear from you! Fill out the form below to apply and take the first step toward an exciting new chapter in your career.",
-      zh: "您是一位充滿熱情和才華的髮型設計師，正在尋找職涯上的突破嗎？Initial Salon 持續尋找具有創意的專業人士加入我們充滿活力的團隊。在這裡，您將擁有一個展現專業技術的舞台，向經驗豐富的造型師學習，並與我們共同成長。如果您注重細節、致力於客戶滿意度，並對美髮藝術充滿熱愛，我們期待您的加入！請填寫以下表格申請，為您精彩的職涯新篇章踏出第一步。",
-      ja: "情熱と才能溢れるヘアスタイリストの方、キャリアをさらに高めませんか？Initial Salon では、クリエイティブなプロフェッショナルを常に募集しています。当サロンでは、技術を発揮できる活気ある環境をご用意しており、経験豊富なスタイリストから学びながら共に成長できます。細部へのこだわり、お客様満足への情熱、そしてヘアスタイリングへの愛をお持ちの方、ぜひご連絡ください。以下のフォームにご記入いただき、新たなキャリアへの第一歩を踏み出してください。",
+      en: "Initial Salon is where new talent gets seen.\n\nWe're here for stylists who want more — more growth, more creativity, more visibility, and more opportunities to build a name for themselves.\n\nFrom skill development to social media exposure, we give the next generation of hairstylists a platform to grow in the real world of beauty.\n\nWe also welcome Working Holiday / IEC visa holders who want to gain salon experience in Canada while being part of a creative and supportive team.\n\nCreate your style. Build your name. Grow with us.",
+      zh: "Initial Salon 是新世代人才嶄露頭角的舞台。\n\n我們為渴望更多的造型師而存在——更多成長、更多創意、更多曝光，以及更多打造個人品牌的機會。\n\n從技術精進到社群媒體曝光，我們為新一代髮型師提供在真實美業世界中成長的平台。\n\n我們也歡迎持有打工度假 / IEC 簽證的夥伴，在加拿大累積沙龍經驗，同時加入一個充滿創意與支持的團隊。\n\n創造你的風格。建立你的名字。與我們一起成長。",
+      ja: "これからのスタイリストが、もっと自由に、もっと自分らしく輝ける場所。\n\nInitial Salonは、新しい世代の才能にチャンスとステージを用意しています。\n\n技術を磨くだけでなく、SNS発信やデジタルマーケティングの力を活かして、自分の魅力をもっと多くの人に届ける。\n\nここでは、スタイリストとしての成長も、自分自身のブランドづくりも、どちらも大切にできます。\n\nワーキングホリデー・IECビザの方も歓迎。\n\nカナダで新しい経験を積みながら、自分の可能性を広げてみませんか？\n\n自分のスタイルで、未来をつくる。",
     },
     nameLabel: { en: "Name", zh: "姓名", ja: "お名前" },
     namePlaceholder: { en: "Your name", zh: "您的姓名", ja: "お名前をご入力ください" },
