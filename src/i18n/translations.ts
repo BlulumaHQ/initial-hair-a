@@ -9,7 +9,7 @@ export const translations = {
     portfolio: { en: "PORTFOLIO", zh: "作品集", ja: "ポートフォリオ" },
     joinTeam: { en: "JOIN OUR TEAM", zh: "加入我們", ja: "採用情報" },
     shop: { en: "SHOP", zh: "商店", ja: "ショップ" },
-    bookAppointment: { en: "Book Appointment", zh: "預約服務", ja: "ご予約" },
+    bookAppointment: { en: "BOOK APPOINTMENT", zh: "預約服務", ja: "ご予約" },
   },
 
   // ── Hero Slides ──
@@ -234,8 +234,8 @@ export const translations = {
     navigation: { en: "NAVIGATION", zh: "網站導覽", ja: "ナビゲーション" },
     quickLinks: { en: "QUICK LINKS", zh: "快速連結", ja: "クイックリンク" },
     contactTitle: { en: "CONTACT", zh: "聯繫方式", ja: "お問い合わせ" },
-    shopProducts: { en: "Shop Products", zh: "選購產品", ja: "商品を見る" },
-    joinOurTeam: { en: "Join Our Team", zh: "加入我們", ja: "採用情報" },
+    shopProducts: { en: "SHOP PRODUCTS", zh: "選購產品", ja: "商品を見る" },
+    joinOurTeam: { en: "JOIN OUR TEAM", zh: "加入我們", ja: "採用情報" },
     hoursShort: {
       en: "Mon – Sun: 11 am – 7 pm",
       zh: "週一至週日：上午 11 時 – 下午 7 時",
