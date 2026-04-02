@@ -60,17 +60,17 @@ const Footer = () => {
             <h4 className="font-body text-[11px] font-semibold tracking-[0.14em] uppercase text-foreground mb-5">{t(translations.footer.quickLinks)}</h4>
             <ul className="space-y-3">
               <li>
-                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors">
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide">
                   {t(translations.nav.bookAppointment)}
                 </a>
               </li>
               <li>
-                <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors">
+                <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide">
                   {t(translations.footer.shopProducts)}
                 </a>
               </li>
               <li>
-                <a href="#join-team" onClick={(e) => handleAnchor(e, "#join-team")} className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#join-team" onClick={(e) => handleAnchor(e, "#join-team")} className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide">
                   {t(translations.footer.joinOurTeam)}
                 </a>
               </li>
