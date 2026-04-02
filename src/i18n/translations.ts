@@ -9,7 +9,7 @@ export const translations = {
     portfolio: { en: "PORTFOLIO", zh: "作品集", ja: "ポートフォリオ" },
     joinTeam: { en: "JOIN OUR TEAM", zh: "加入我們", ja: "採用情報" },
     shop: { en: "SHOP", zh: "商店", ja: "ショップ" },
-    bookAppointment: { en: "Book Appointment", zh: "預約服務", ja: "ご予約" },
+    bookAppointment: { en: "BOOK APPOINTMENT", zh: "預約服務", ja: "ご予約" },
   },
 
   // ── Hero Slides ──
