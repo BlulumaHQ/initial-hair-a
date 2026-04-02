@@ -1,4 +1,5 @@
 import { Phone, MapPin, Clock } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations } from "@/i18n/translations";
 
