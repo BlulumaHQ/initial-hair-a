@@ -70,6 +70,11 @@ const Footer = () => {
                   {t(translations.footer.shopProducts)}
                 </a>
               </li>
+              <li>
+                <a href="#join-team" onClick={(e) => handleAnchor(e, "#join-team")} className="font-body text-[15px] text-muted-foreground hover:text-foreground transition-colors">
+                  {t(translations.footer.joinOurTeam)}
+                </a>
+              </li>
             </ul>
           </div>
           <div>
