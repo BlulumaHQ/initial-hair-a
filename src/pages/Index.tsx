@@ -510,9 +510,11 @@ const Index = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
             <motion.span variants={reveal} custom={0} className="section-label">{t(translations.joinTeam.label)}</motion.span>
             <motion.h2 variants={reveal} custom={1} className="section-title mb-6">{t(translations.joinTeam.title)}</motion.h2>
-            <motion.p variants={reveal} custom={2} className="font-body text-[15px] md:text-base text-muted-foreground leading-[1.9] mb-10 max-w-xl mx-auto">
-              {t(translations.joinTeam.description)}
-            </motion.p>
+            <motion.div variants={reveal} custom={2} className="font-body text-[15px] md:text-base text-muted-foreground leading-[1.9] mb-10 max-w-xl mx-auto space-y-4">
+              {t(translations.joinTeam.description).split('\n\n').map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </motion.div>
           </motion.div>
 
           {/* Simple contact form */}
