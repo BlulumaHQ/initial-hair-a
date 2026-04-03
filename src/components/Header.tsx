@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations } from "@/i18n/translations";
+import logoImg from "@/assets/logo.png";
 
 const BOOKING_URL =
   "https://www.fresha.com/a/initial-salon-richmond-6386-no-3-road-kr9spcrw/all-offer?menu=true&rwg_token=AJKvS9UQy7d34XWVYz7Y2UcNMMI0llYMKBzKtJ-ix_hcoOULUtHkYyx4zXbut-9xmCflwhAa8Da7oKG28yDyZbEloWPcwryVjw%3D%3D&gei=7VnqZrP2Aorx0PEPoLbVsQ8";
@@ -53,7 +54,7 @@ const Header = () => {
           className="flex-shrink-0"
         >
           <img
-            src="https://initialsalon.com/wp-content/uploads/2024/06/initial-Hair-salon-logo.png"
+            src={logoImg}
             alt="Initial Salon"
             className="h-[54px] md:h-[64px] w-auto"
           />
