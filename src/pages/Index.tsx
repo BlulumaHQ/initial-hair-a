@@ -9,25 +9,35 @@ import heroSlide2 from "@/assets/hero-slide-2.webp";
 import heroSlide3 from "@/assets/hero-slide-3.webp";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations } from "@/i18n/translations";
+import imgAbout from "@/assets/stylists/about.webp";
+import imgKen from "@/assets/stylists/ken.webp";
+import imgJames from "@/assets/stylists/james.webp";
+import imgHubert from "@/assets/stylists/hubert.webp";
+import imgHikaso from "@/assets/stylists/hikaso.webp";
+import imgAngus from "@/assets/stylists/angus.webp";
+import imgMako from "@/assets/stylists/mako.webp";
+import imgWanda from "@/assets/stylists/wanda.webp";
+import imgStella from "@/assets/stylists/stella.webp";
+import imgHiro from "@/assets/stylists/hiro.webp";
 
 const BOOKING_URL =
   "https://www.fresha.com/a/initial-salon-richmond-6386-no-3-road-kr9spcrw/all-offer?menu=true&rwg_token=AJKvS9UQy7d34XWVYz7Y2UcNMMI0llYMKBzKtJ-ix_hcoOULUtHkYyx4zXbut-9xmCflwhAa8Da7oKG28yDyZbEloWPcwryVjw%3D%3D&gei=7VnqZrP2Aorx0PEPoLbVsQ8";
 
 /* ── Stylists Data ── */
 const stylists = [
-  { name: "KEN", title: "HR Manager", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-51.jpg", instagram: "https://www.instagram.com/ken07kei/" },
+  { name: "KEN", title: "HR Manager", img: imgKen, instagram: "https://www.instagram.com/ken07kei/" },
   { name: "SUMMER", title: "Manager", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-49.jpg", instagram: "https://www.instagram.com/hellosum.mer/" },
-  { name: "JAMES", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-50.jpg", instagram: "https://www.instagram.com/jamesrickking/" },
-  { name: "HUBERT", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-52.jpg", instagram: "https://www.instagram.com/hubert_hairstar/" },
-  { name: "HIKASO", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-22.jpg", instagram: "https://www.instagram.com/hikasoooo/" },
+  { name: "JAMES", title: "Stylist", img: imgJames, instagram: "https://www.instagram.com/jamesrickking/" },
+  { name: "HUBERT", title: "Stylist", img: imgHubert, instagram: "https://www.instagram.com/hubert_hairstar/" },
+  { name: "HIKASO", title: "Stylist", img: imgHikaso, instagram: "https://www.instagram.com/hikasoooo/" },
   { name: "Ayane Oda", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2025/11/initial-hair-pic-222.jpg", instagram: "https://www.instagram.com/ayane_oda" },
-  { name: "ANGUS", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-23.jpg", instagram: "https://www.instagram.com/angus_hero/" },
-  { name: "MAKO", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-54.jpg", instagram: "https://www.instagram.com/mako_vancouver_hairstylist/" },
-  { name: "Wanda", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2025/03/%E6%9C%AA%E5%91%BD%E5%90%8D%E8%A8%AD%E8%A8%88-6.jpg", instagram: "https://www.instagram.com/wanda.hairstylist.vancouver" },
+  { name: "ANGUS", title: "Stylist", img: imgAngus, instagram: "https://www.instagram.com/angus_hero/" },
+  { name: "MAKO", title: "Stylist", img: imgMako, instagram: "https://www.instagram.com/mako_vancouver_hairstylist/" },
+  { name: "Wanda", title: "Stylist", img: imgWanda, instagram: "https://www.instagram.com/wanda.hairstylist.vancouver" },
   { name: "Emi", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2025/11/initial-hair-pic-1333.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
   { name: "DONNA", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-42.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
-  { name: "STELLA", title: "G.M", img: "https://initialsalon.com/wp-content/uploads/2024/08/initial-hair-pic-20.jpg", instagram: "https://www.instagram.com/initial_hair_salon/" },
-  { name: "Hiro", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2024/09/initial-hair-hero-6.jpg", instagram: "https://www.instagram.com/hiro_masa.hair" },
+  { name: "STELLA", title: "G.M", img: imgStella, instagram: "https://www.instagram.com/initial_hair_salon/" },
+  { name: "Hiro", title: "Stylist", img: imgHiro, instagram: "https://www.instagram.com/hiro_masa.hair" },
   { name: "Meg", title: "Stylist", img: "https://initialsalon.com/wp-content/uploads/2026/01/initial-hair-pic-1888.png", instagram: "https://www.instagram.com/iki_meguo" },
 ];
 
