@@ -337,7 +337,7 @@ const Index = () => {
               className="aspect-[4/5] overflow-hidden"
             >
               <img
-                src="https://initialsalon.com/wp-content/uploads/2024/06/initial-hair-pic-33.jpg"
+                src={imgAbout}
                 alt="Initial Salon interior"
                 className="w-full h-full object-cover"
               />
