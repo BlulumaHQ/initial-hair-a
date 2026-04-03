@@ -54,7 +54,7 @@ const Header = () => {
           className="flex-shrink-0"
         >
           <img
-            src="https://initialsalon.com/wp-content/uploads/2024/06/initial-Hair-salon-logo.png"
+            src={logoImg}
             alt="Initial Salon"
             className="h-[54px] md:h-[64px] w-auto"
           />
