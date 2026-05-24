@@ -24,6 +24,7 @@ import imgSummer from "@/assets/stylists/summer.webp";
 import imgAyane from "@/assets/stylists/ayane.webp";
 import imgEmi from "@/assets/stylists/emi.webp";
 import imgMeg from "@/assets/stylists/meg.webp";
+import imgMisato from "@/assets/stylists/misato.webp";
 
 const BOOKING_URL =
   "https://www.fresha.com/a/initial-salon-richmond-6386-no-3-road-kr9spcrw/all-offer?menu=true&rwg_token=AJKvS9UQy7d34XWVYz7Y2UcNMMI0llYMKBzKtJ-ix_hcoOULUtHkYyx4zXbut-9xmCflwhAa8Da7oKG28yDyZbEloWPcwryVjw%3D%3D&gei=7VnqZrP2Aorx0PEPoLbVsQ8";
@@ -44,6 +45,7 @@ const stylists = [
   { name: "STELLA", title: "G.M", img: imgStella, instagram: "https://www.instagram.com/initial_hair_salon/" },
   { name: "Hiro", title: "Stylist", img: imgHiro, instagram: "https://www.instagram.com/hiro_masa.hair" },
   { name: "Meg", title: "Stylist", img: imgMeg, instagram: "https://www.instagram.com/iki_meguo" },
+  { name: "Misato", title: "Stylist", img: imgMisato, instagram: "https://www.instagram.com/misato.hair" },
 ];
 
 const testimonials = [
