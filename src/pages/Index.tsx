@@ -45,7 +45,7 @@ const stylists = [
   { name: "STELLA", title: "G.M", img: imgStella, instagram: "https://www.instagram.com/initial_hair_salon/" },
   { name: "Hiro", title: "Stylist", img: imgHiro, instagram: "https://www.instagram.com/hiro_masa.hair" },
   { name: "Meg", title: "Stylist", img: imgMeg, instagram: "https://www.instagram.com/iki_meguo" },
-  { name: "Misato", title: "Stylist", img: imgMisato, instagram: "https://www.instagram.com/misato.hair" },
+  { name: "Misato", title: "Japanese hair straightening specialist", img: imgMisato, instagram: "https://www.instagram.com/misato.hair" },
 ];
 
 const testimonials = [
