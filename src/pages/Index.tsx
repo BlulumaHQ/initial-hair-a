@@ -301,8 +301,40 @@ const TestimonialsSection = () => {
 const serviceKeys = ["cut", "perm", "colour", "treatment", "other"] as const;
 
 /* ── Page ── */
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mbdabbql";
+
 const Index = () => {
   const [expandedService, setExpandedService] = useState<number | null>(0);
+  const [formName, setFormName] = useState("");
+  const [formEmail, setFormEmail] = useState("");
+  const [formMessage, setFormMessage] = useState("");
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const handleJoinSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (formStatus === "sending") return;
+    setFormStatus("sending");
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: formName,
+          email: formEmail,
+          message: formMessage,
+          source: "Initial Salon Website",
+          _replyto: formEmail,
+        }),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setFormStatus("success");
+      setFormName("");
+      setFormEmail("");
+      setFormMessage("");
+    } catch {
+      setFormStatus("error");
+    }
+  };
   const { t } = useLanguage();
 
   useEffect(() => {
