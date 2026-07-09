@@ -301,7 +301,7 @@ const TestimonialsSection = () => {
 const serviceKeys = ["cut", "perm", "colour", "treatment", "other"] as const;
 
 /* ── Page ── */
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mbdabbql";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xgojjjej";
 
 const Index = () => {
   const [expandedService, setExpandedService] = useState<number | null>(0);
