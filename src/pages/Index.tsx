@@ -568,24 +568,34 @@ const Index = () => {
 
           {/* Simple contact form */}
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleJoinSubmit}
             className="text-left space-y-5 max-w-md mx-auto"
           >
             <div>
               <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">{t(translations.joinTeam.nameLabel)}</label>
-              <input type="text" className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder={t(translations.joinTeam.namePlaceholder)} />
+              <input type="text" required maxLength={100} value={formName} onChange={(e) => setFormName(e.target.value)} className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder={t(translations.joinTeam.namePlaceholder)} />
             </div>
             <div>
               <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">{t(translations.joinTeam.emailLabel)}</label>
-              <input type="email" className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder={t(translations.joinTeam.emailPlaceholder)} />
+              <input type="email" required maxLength={255} value={formEmail} onChange={(e) => setFormEmail(e.target.value)} className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors" placeholder={t(translations.joinTeam.emailPlaceholder)} />
             </div>
             <div>
               <label className="font-body text-[12px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 block">{t(translations.joinTeam.messageLabel)}</label>
-              <textarea rows={4} className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder={t(translations.joinTeam.messagePlaceholder)} />
+              <textarea rows={4} required maxLength={2000} value={formMessage} onChange={(e) => setFormMessage(e.target.value)} className="w-full border border-border bg-background px-4 py-3.5 font-body text-[15px] text-foreground focus:outline-none focus:border-foreground/30 transition-colors resize-none" placeholder={t(translations.joinTeam.messagePlaceholder)} />
             </div>
-            <button type="submit" className="btn-primary w-full gap-2 justify-center py-4">
-              <Send className="w-3.5 h-3.5" /> {t(translations.joinTeam.submit)}
+            <button type="submit" disabled={formStatus === "sending"} className="btn-primary w-full gap-2 justify-center py-4 disabled:opacity-60 disabled:cursor-not-allowed">
+              <Send className="w-3.5 h-3.5" /> {formStatus === "sending" ? "..." : t(translations.joinTeam.submit)}
             </button>
+            {formStatus === "success" && (
+              <p className="text-center font-body text-sm text-[#565d50]" role="status">
+                Thank you! Your message has been sent successfully.
+              </p>
+            )}
+            {formStatus === "error" && (
+              <p className="text-center font-body text-sm text-destructive" role="alert">
+                Something went wrong. Please try again or contact us on Instagram.
+              </p>
+            )}
           </form>
         </div>
       </section>
